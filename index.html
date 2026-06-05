@@ -323,48 +323,102 @@
             transform: translateY(-3px);
         }
 
-        /* ─── HERO IMAGES ─── */
+        /* ─── HERO SLIDER ─── */
         .hero-visual {
             position: relative;
-            height: 580px;
+            height: 520px;
             z-index: 2;
         }
 
-        .img-card {
-            position: absolute;
-            overflow: hidden;
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-        }
-
-        .img-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 36px 70px rgba(0, 0, 0, 0.55);
-        }
-
-        .img-card img {
+        .hero-slider {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+            position: relative;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.7s ease;
+            /* blurred same image fills background */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        /* Blur + darken the background fill */
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            filter: blur(18px) brightness(0.45) saturate(1.4);
+            transform: scale(1.08);
+            z-index: 0;
+        }
+
+        /* Dark vignette over the blur */
+        .hero-slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(5, 13, 26, 0.28);
+            z-index: 1;
+        }
+
+        .hero-slide img {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center center;
             display: block;
         }
 
-        .img-main {
-            width: 370px;
-            height: 480px;
-            top: 20px;
-            left: 10px;
-            z-index: 2;
-        }
-
-        .img-accent {
-            width: 240px;
-            height: 300px;
+        .hero-slide-caption {
+            position: absolute;
             bottom: 0;
+            left: 0;
             right: 0;
             z-index: 3;
+            padding: 14px 18px;
+            background: linear-gradient(180deg, transparent, rgba(5, 13, 26, 0.88));
+            font-size: 0.82rem;
+            color: rgba(240, 244, 248, 0.9);
+            font-style: italic;
+        }
+
+        .hero-slider-dots {
+            position: absolute;
+            bottom: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 5;
+        }
+
+        .hsd {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+            cursor: pointer;
+            transition: background 0.25s, transform 0.25s;
+        }
+
+        .hsd.active {
+            background: var(--accent);
+            transform: scale(1.3);
         }
 
         .stat-pill {
@@ -917,6 +971,89 @@
             font-style: italic;
         }
 
+        /* ─── URDU MODAL CONTENT ─── */
+        .urdu-content {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .urdu-content p {
+            line-height: 2.1;
+            font-size: 1rem;
+        }
+
+        .urdu-content h3 {
+            padding-left: 0;
+            padding-right: 12px;
+            border-left: none;
+            border-right: 3px solid var(--accent);
+        }
+
+        .urdu-content p strong {
+            color: var(--accent);
+            font-size: 1.02rem;
+        }
+
+        /* Inline attendees image */
+        .modal-inline-img {
+            margin: 28px 0;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .modal-inline-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 320px;
+            object-fit: cover;
+        }
+
+        .modal-inline-caption {
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--muted);
+            font-style: italic;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.03);
+            margin: 0 !important;
+            direction: rtl;
+        }
+
+        /* Speakers bullet list */
+        .modal-speakers-list {
+            list-style: none;
+            padding: 0;
+            margin: 14px 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+        }
+
+        .modal-speakers-list li {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .modal-speakers-list li strong {
+            color: var(--text) !important;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        @media (max-width: 600px) {
+            .modal-speakers-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* ─── UNDER CONSTRUCTION BANNER ─── */
         .construction-banner {
             background: linear-gradient(90deg,
@@ -991,6 +1128,210 @@
             animation: pulse 2s infinite;
         }
 
+        /* ─── NEWS CAROUSEL ─── */
+        .news-carousel-wrap {
+            position: relative;
+            min-height: 420px;
+        }
+
+        .news-slide {
+            display: none;
+        }
+
+        .news-slide.active {
+            display: block;
+        }
+
+        .news-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(15, 188, 131, 0.12);
+            border: 1px solid rgba(15, 188, 131, 0.35);
+            color: var(--accent);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+            backdrop-filter: blur(8px);
+        }
+
+        .news-nav-btn:hover {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(15, 188, 131, 0.4);
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .news-prev {
+            left: -58px;
+        }
+
+        .news-next {
+            right: -58px;
+        }
+
+        .news-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .nd {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: background 0.25s, transform 0.25s;
+        }
+
+        .nd.active {
+            background: var(--accent);
+            transform: scale(1.3);
+        }
+
+        /* ─── MEET & GREET HIGHLIGHT ─── */
+        .highlight-img-wrap {
+            margin-top: 20px;
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .highlight-img-wrap img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .highlight-img-wrap:hover img {
+            transform: scale(1.04);
+        }
+
+        .highlight-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 16px;
+            background: linear-gradient(180deg, transparent, rgba(5, 13, 26, 0.88));
+            font-size: 0.78rem;
+            color: rgba(240, 244, 248, 0.85);
+            font-style: italic;
+        }
+
+        /* ─── SECOND NEWS STORY (Urdu press release) ─── */
+        .news-card-urdu {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .news-urdu-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 260px;
+        }
+
+        .news-urdu-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .news-urdu-images img:first-child {
+            border-right: 2px solid var(--bg);
+        }
+
+        .news-urdu-body {
+            padding: 36px 44px;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .news-urdu-body .news-tag {
+            font-family: inherit;
+            letter-spacing: 0;
+        }
+
+        .news-urdu-body .news-date {
+            direction: ltr;
+            text-align: right;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .news-urdu-title {
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+            font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+            font-weight: 700;
+            line-height: 2;
+            margin-bottom: 18px;
+            color: var(--text);
+        }
+
+        .news-urdu-body p {
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 2.2;
+            margin-bottom: 14px;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+        }
+
+        .news-urdu-body h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 18px 0 8px;
+        }
+
+        .news-urdu-byline {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            font-size: 0.82rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .news-urdu-images {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .news-urdu-images img {
+                height: 200px;
+            }
+
+            .news-urdu-images img:first-child {
+                border-right: none;
+                border-bottom: 2px solid var(--bg);
+            }
+
+            .news-urdu-body {
+                padding: 24px;
+            }
+        }
+
         /* ─── REVEAL ANIMATION ─── */
         .reveal {
             opacity: 0;
@@ -1028,17 +1369,7 @@
             }
 
             .hero-visual {
-                height: 400px;
-            }
-
-            .img-main {
-                width: 280px;
-                height: 360px;
-            }
-
-            .img-accent {
-                width: 180px;
-                height: 230px;
+                height: 380px;
             }
 
             .news-card {
@@ -1060,6 +1391,9 @@
             .footer-brand {
                 grid-column: 1 / -1;
             }
+
+            .news-prev { left: -10px; }
+            .news-next { right: -10px; }
         }
 
         @media (max-width: 600px) {
@@ -1166,12 +1500,30 @@
                     </div>
 
                     <div class="hero-visual reveal">
-                        <div class="img-card img-main">
-                            <img src="images/hero1.jpeg" alt="AIMC Annual General Body Meeting" loading="lazy">
+                        <!-- Auto-sliding image carousel -->
+                        <div class="hero-slider" id="heroSlider">
+                            <div class="hero-slide active" style="background-image:url('images/foundation_day.jpeg')">
+                                <img src="images/foundation_day.jpeg" alt="AIMC 33rd Foundation Day Celebrations">
+                                <div class="hero-slide-caption">33rd Foundation Day Celebrations</div>
+                            </div>
+                            <div class="hero-slide" style="background-image:url('images/dr_alam_sonia.jpeg')">
+                                <img src="images/dr_alam_sonia.jpeg" alt="Dr. Alam with Sonia Gandhi">
+                                <div class="hero-slide-caption">Dr. Alam with Sonia Gandhi</div>
+                            </div>
+                            <div class="hero-slide" style="background-image:url('images/hero1.jpeg')">
+                                <img src="images/hero1.jpeg" alt="AIMC Annual General Body Meeting">
+                                <div class="hero-slide-caption">AIMC Annual General Body Meeting</div>
+                            </div>
+                            <div class="hero-slide" style="background-image:url('images/hero2.jpeg')">
+                                <img src="images/hero2.jpeg" alt="National Convention – Save the Constitution">
+                                <div class="hero-slide-caption">National Convention – Save the Constitution</div>
+                            </div>
                         </div>
-                        <div class="img-card img-accent">
-                            <img src="images/hero2.jpeg" alt="National Convention – Save the Constitution"
-                                loading="lazy">
+                        <div class="hero-slider-dots" id="heroSliderDots">
+                            <span class="hsd active" onclick="heroGoTo(0)"></span>
+                            <span class="hsd" onclick="heroGoTo(1)"></span>
+                            <span class="hsd" onclick="heroGoTo(2)"></span>
+                            <span class="hsd" onclick="heroGoTo(3)"></span>
                         </div>
                         <div class="stat-pill">
                             <span class="stat-number">1992</span>
@@ -1193,38 +1545,67 @@
                     Stay informed about the latest activities and announcements from All India Milli Council.
                 </p>
 
-                <div class="news-card reveal">
-                    <div class="news-img">
-                        <img src="images/photo.jpeg" alt="Condolence Meeting" loading="lazy">
-                        <div class="news-img-overlay"></div>
+                <!-- Carousel wrapper -->
+                <div class="news-carousel-wrap">
+                    <button class="news-nav-btn news-prev" onclick="newsNav(-1)" aria-label="Previous story">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="news-nav-btn news-next" onclick="newsNav(1)" aria-label="Next story">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+
+                    <!-- Story 1 -->
+                    <div class="news-slide active reveal" id="newsSlide0">
+                        <div class="news-card">
+                            <div class="news-img">
+                                <img src="images/photo.jpeg" alt="Condolence Meeting" loading="lazy">
+                                <div class="news-img-overlay"></div>
+                            </div>
+                            <div class="news-body">
+                                <span class="news-tag">Condolence</span>
+                                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>New Delhi · April 15, 2026</time>
+                                <h2 class="news-title">AIMC Mourns the Passing of Maulana Hakim Mohammad Abdullah Mughesi</h2>
+                                <p>A condolence meeting to mourn the demise of the President of the All India Milli Council (AIMC), Maulana Hakim Mohammad Abdullah Mughesi, was organised at the Institute of Objective Studies, New Delhi, on April 15, 2026.</p>
+                                <h3>Opening Tributes</h3>
+                                <p>Maulana Mughesi was remembered as a great leader, scholar, and institution builder who served as AIMC President for 21 years, dedicating his life to education, interfaith dialogue, and community welfare.</p>
+                                <h3>A Lifetime of Service</h3>
+                                <p>Scholars, educators, and leaders from across India recalled his tireless efforts in establishing madarsas and promoting Islamic and contemporary education.</p>
+                                <button class="read-more-btn" onclick="openArticleModal('modal1')">
+                                    Read Full Story <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="news-body">
-                        <span class="news-tag">Condolence</span>
-                        <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>New Delhi ·
-                            April 15, 2026</time>
-                        <h2 class="news-title">AIMC Mourns the Passing of Maulana Hakim Mohammad Abdullah Mughesi</h2>
-                        <p>
-                            A condolence meeting to mourn the demise of the President of the All India Milli Council
-                            (AIMC), Maulana Hakim Mohammad Abdullah Mughesi, was organised at the Institute of Objective
-                            Studies, New Delhi, on April 15, 2026.
-                        </p>
-                        <h3>Opening Tributes</h3>
-                        <p>
-                            Maulana Mughesi was remembered as a great leader, scholar, and institution builder who
-                            served as AIMC President for 21 years, dedicating his life to education, interfaith dialogue,
-                            and community welfare.
-                        </p>
-                        <h3>A Lifetime of Service</h3>
-                        <p>
-                            Scholars, educators, and leaders from across India recalled his tireless efforts in
-                            establishing madarsas and promoting Islamic and contemporary education. The meeting concluded
-                            with prayers and a vote of thanks in his memory.
-                        </p>
-                        <button class="read-more-btn" onclick="openArticleModal()">
-                            Read Full Story <i class="fas fa-arrow-right"></i>
-                        </button>
+
+                    <!-- Story 2 -->
+                    <div class="news-slide" id="newsSlide1">
+                        <div class="news-card-urdu">
+                            <div class="news-urdu-images">
+                                <img src="images/alam_memorial_1.jpeg" alt="ڈاکٹر منظور عالم یادگاری پروگرام" loading="lazy">
+                                <img src="images/alam_memorial_2.jpeg" alt="کانسٹی ٹیوشن کلب، نئی دہلی" loading="lazy">
+                            </div>
+                            <div class="news-urdu-body">
+                                <span class="news-tag">پریس ریلیز</span>
+                                <time class="news-date" style="justify-content:flex-end;direction:ltr"><i class="far fa-calendar-alt"></i>&nbsp;نئی دہلی · 10 مئی 2026</time>
+                                <h2 class="news-urdu-title">ڈاکٹر منظور عالم کی حیات اور میراث پر اہم پروگرام</h2>
+                                <p>کانسٹی ٹیوشن کلب کے اسپیکر ہال میں منعقد یادگاری پروگرام میں ملک وبیرون ملک کی قابل ذکر شخصیات نے ڈاکٹر منظور عالم کی قربانیوں اور اہم کارناموں کو یاد کرتے ہوئے انھیں خراج عقیدت پیش کیا۔</p>
+                                <p>انٹرنیشنل اسلامک یونیورسٹی ملیشیا کے پروفیسر داؤد اے یحییٰ الہدابی نے کہا کہ ڈاکٹر محمد منظور عالم نے تعلیمی لیڈر کے طور پر ایک نقش چھوڑا ہے اور بین مذہبی مذاکرات کو آگے بڑھایا۔</p>
+                                <div class="news-urdu-byline">جاری کردہ — شعبہ نشرواشاعت، آل انڈیا ملی کونسل</div>
+                                <button class="read-more-btn" style="margin-top:20px" onclick="openArticleModal('modal2')">
+                                    پوری خبر پڑھیں <i class="fas fa-arrow-left"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
+
+                <!-- Dots indicator -->
+                <div class="news-dots">
+                    <span class="nd active" onclick="newsGoTo(0)"></span>
+                    <span class="nd" onclick="newsGoTo(1)"></span>
+                </div>
+
             </div>
         </section>
 
@@ -1328,135 +1709,206 @@
 
     </div><!-- /.page -->
 
-    <!-- ─── ARTICLE MODAL ─── -->
-    <div class="article-modal-backdrop" id="articleModal" onclick="closeArticleModal(event)">
+    <!-- ─── MODAL 1: Mughesi condolence ─── -->
+    <div class="article-modal-backdrop" id="modal1" onclick="closeArticleModal(event)">
         <div class="article-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <button class="modal-close" onclick="closeArticleModal()" aria-label="Close"><i
-                    class="fas fa-times"></i></button>
-
+            <button class="modal-close" onclick="closeModalById('modal1')" aria-label="Close"><i class="fas fa-times"></i></button>
             <div class="modal-img-wrap">
                 <img src="images/photo.jpeg" alt="Condolence meeting – AIMC, April 2026">
                 <div class="modal-img-fade"></div>
-                <div class="modal-img-caption">
-                    <span class="news-tag" style="position:relative;z-index:2">Condolence</span>
-                </div>
+                <div class="modal-img-caption"><span class="news-tag" style="position:relative;z-index:2">Condolence</span></div>
             </div>
-
             <div class="modal-body">
-                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>New Delhi · April
-                    15, 2026</time>
-                <h2 class="modal-title" id="modalTitle">AIMC Mourns the Passing of Maulana Hakim Mohammad Abdullah
-                    Mughesi</h2>
-
+                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>New Delhi · April 15, 2026</time>
+                <h2 class="modal-title" id="modalTitle">AIMC Mourns the Passing of Maulana Hakim Mohammad Abdullah Mughesi</h2>
                 <div class="modal-content">
-                    <p><strong>New Delhi:</strong> A condolence meeting to mourn the demise of the President of the All
-                        India Milli Council (AIMC), Maulana Hakim Mohammad Abdullah Mughesi, was organised by the Council
-                        at the auditorium of the Institute of Objective Studies on April 15, 2026.</p>
-                    <p>The programme began with the recitation of verses from the Holy Qur'an by Maulana Umar Abdi
-                        Qasmi, followed by their Urdu translation. The proceedings were conducted by AIMC Assistant
-                        Secretary Maulana Shah Ajmal Farooq Nadwi.</p>
-
+                    <p><strong>New Delhi:</strong> A condolence meeting to mourn the demise of the President of the All India Milli Council (AIMC), Maulana Hakim Mohammad Abdullah Mughesi, was organised by the Council at the auditorium of the Institute of Objective Studies on April 15, 2026.</p>
+                    <p>The programme began with the recitation of verses from the Holy Qur'an by Maulana Umar Abdi Qasmi, followed by their Urdu translation. The proceedings were conducted by AIMC Assistant Secretary Maulana Shah Ajmal Farooq Nadwi.</p>
                     <h3>Tributes to a Visionary Leader</h3>
-                    <p>In his opening remarks, AIMC Assistant Secretary General Shaikh Nizamuddin described Maulana
-                        Mughesi as a great personality who constantly encouraged the younger generation to work for the
-                        welfare of society and spread Islamic knowledge. He highlighted the Maulana's efforts in
-                        establishing several Islamic seminaries for imparting religious education and values to children.
-                    </p>
-                    <p>Secretary General of the IOS, Mohammad Alam, recalled his close association with the late Maulana
-                        and shared the guidance he received from him regarding strengthening and expanding the AIMC.</p>
-                    <p>AIMC Assistant Secretary Suleiman Khan said the organisation had lost an important personality. He
-                        noted that Maulana Mughesi served as AIMC President for <strong>21 years</strong> and maintained
-                        cordial relations with various Milli organisations.</p>
-                    <p>Noted Islamic scholar Maulana Khalilur Rahman Sajjad Nomani remembered the Maulana's services to
-                        the community and his efforts in promoting inter-community understanding. He said Maulana Mughesi
-                        dedicated his life to religious and contemporary education, carrying out his responsibilities
-                        with courage, positivity, and determination.</p>
-
+                    <p>In his opening remarks, AIMC Assistant Secretary General Shaikh Nizamuddin described Maulana Mughesi as a great personality who constantly encouraged the younger generation to work for the welfare of society and spread Islamic knowledge.</p>
+                    <p>Secretary General of the IOS, Mohammad Alam, recalled his close association with the late Maulana and shared the guidance he received from him regarding strengthening and expanding the AIMC.</p>
+                    <p>AIMC Assistant Secretary Suleiman Khan noted that Maulana Mughesi served as AIMC President for <strong>21 years</strong> and maintained cordial relations with various Milli organisations.</p>
+                    <p>Maulana Khalilur Rahman Sajjad Nomani said Maulana Mughesi dedicated his life to religious and contemporary education, carrying out his responsibilities with courage, positivity, and determination.</p>
                     <h3>Message from AIMPLB Leadership</h3>
-                    <p>Chairman of the All India Muslim Personal Law Board (AIMPLB), Maulana Khalid Saifullah Rahmani, in
-                        a message read out by Maulana Shah Ajmal Farooq Nadwi, paid glowing tributes to the late Maulana
-                        and described him as an institution builder.</p>
-                    <p>He stated that dozens of madarsas were established under his guidance and that the AIMC
-                        consistently remained at the forefront of struggles concerning the Muslim community during his
-                        leadership. He also highlighted the Maulana's role in promoting interfaith dialogue and
-                        understanding.</p>
-
+                    <p>Chairman of the All India Muslim Personal Law Board (AIMPLB), Maulana Khalid Saifullah Rahmani, described him as an institution builder and noted that dozens of madarsas were established under his guidance.</p>
                     <h3>Speakers Recall His Contributions</h3>
-                    <p>President of the Delhi unit of AIMC, Haji Pervez Miyan, said he never imagined the Maulana would
-                        leave the world so suddenly. He expressed faith that Allah would improve the situation for
-                        Muslims and prayed for equally capable leadership for the Council.</p>
-                    <p>General Secretary of AIMC Telangana, Mufti Umar Abideen, described Maulana Mughesi as his elder,
-                        mentor, and patron. He informed attendees that a book documenting the Maulana's life and works
-                        would soon be published.</p>
-                    <p>Amir of Markazi Jamiat Ahle Hadees Hind, Maulana Asghar Ali Imam Mehdi Salafi, praised the
-                        Maulana's efforts in spreading Islamic education and expanding AIMC's organisational network over
-                        two decades.</p>
-                    <p>Mufti Mohammad Nadir Qasmi of the Islamic Fiqh Academy said that strengthening AIMC after the
-                        Maulana's demise would be the greatest tribute to its three prominent leaders — Qazi Mujahidul
-                        Islam Qasmi, Dr. Mohammad Manzoor Alam, and Maulana Abdullah Mughesi.</p>
-
+                    <p>Haji Pervez Miyan (Delhi AIMC President) expressed faith that Allah would provide equally capable leadership. Mufti Umar Abideen announced a book documenting the Maulana's life would soon be published. Maulana Asghar Ali Imam Mehdi Salafi praised his two-decade expansion of AIMC's network.</p>
+                    <p>Mufti Mohammad Nadir Qasmi said strengthening AIMC would be the greatest tribute to its three prominent leaders — Qazi Mujahidul Islam Qasmi, Dr. Mohammad Manzoor Alam, and Maulana Abdullah Mughesi.</p>
                     <h3>Concerns Over the Community's Future</h3>
-                    <p>President of AIMC Assam Unit, Hafiz Rasheed Chowdhary, expressed sorrow over the Maulana's demise
-                        and highlighted the challenges faced by Muslims in Assam.</p>
-                    <p>Chairman of IOS, Prof. M. Afzal Wani, observed that the passing of such a major leader had created
-                        a significant void. He said that sincerity, capability, and honesty were the true strengths of
-                        any organisation — qualities that Maulana Mughesi possessed in abundance.</p>
-                    <p>Islamic scholar and author Maulana Abdul Hameed Noumani, who knew the Maulana since 1983–84,
-                        praised his patience, steadfastness, and commitment to strengthening madarsas in
-                        post-Independence India.</p>
-                    <p>General Secretary of AIMPLB, Maulana Fazlur Rahman Mujaddidi, described the Maulana's death as an
-                        irreparable loss to the Ummah. He recalled that the Maulana received the prestigious <strong>IOS
-                            Lifetime Achievement Award in 2021</strong> for his contribution to educational empowerment.
-                    </p>
-                    <p>Chief Editor of Millat Times, Shams Tabrez Qasmi, said the Maulana's speeches were thoughtful and
-                        insightful, and that he was known for resolving contentious issues.</p>
-
+                    <p>Prof. M. Afzal Wani said the passing had created a significant void, noting sincerity, capability, and honesty were qualities the Maulana possessed in abundance. Maulana Fazlur Rahman Mujaddidi described the death as an irreparable loss and recalled the <strong>IOS Lifetime Achievement Award 2021</strong>.</p>
                     <h3>Remembering His Leadership and Legacy</h3>
-                    <p>Head of the AIMC Telangana legal cell, Advocate Afsar Jahan, described him as <em>"a leader who
-                            led the leaders behind."</em></p>
-                    <p>Mohammad Ahmad from Jamaat-e-Islami Hind praised the Maulana's sincerity and dedication, while
-                        emphasising the need for strong leadership for the Ummah.</p>
-                    <p>The Maulana's son, Maulana Abdul Malik Mughesi, Principal of Jamia Gulzar-i-Husainia, described
-                        his father as <em>"a public property who belonged to all."</em> He highlighted his patience,
-                        balanced decision-making, and commitment to harmony and mutual understanding.</p>
-                    <p>In his presidential remarks, acting AIMC President Maulana Anisur Rahman Qasmi said the Maulana's
-                        life and writings reflected brilliance, patience, and foresight. He added that the Maulana always
-                        valued consultation and worked to cultivate younger leadership within the organisation.</p>
-                    <p>Vice-Chairperson of IOS and AIMC Treasurer Prof. Haseena Hashia said the Maulana worked tirelessly
-                        for educational awakening among Muslims by establishing a chain of madarsas imparting both
-                        Islamic and modern education. She recalled his famous slogan:</p>
-
+                    <p>Advocate Afsar Jahan described him as <em>"a leader who led the leaders behind."</em> His son, Maulana Abdul Malik Mughesi, called his father <em>"a public property who belonged to all."</em></p>
+                    <p>Acting AIMC President Maulana Anisur Rahman Qasmi said the Maulana's life reflected brilliance, patience, and foresight. Prof. Haseena Hashia recalled his famous slogan:</p>
                     <blockquote class="modal-quote">
                         <p class="quote-urdu">تم ہمیں تریشول دو، ہم تمہیں پھول دیں گے</p>
                         <p class="quote-trans">"While you give us tridents, we shall give you flowers."</p>
                     </blockquote>
-
-                    <p>She further noted that the Maulana was very close to Qazi Mujahidul Islam Qasmi, who had chosen
-                        him as his successor.</p>
-
                     <h3>Vote of Thanks</h3>
-                    <p>At the conclusion of the programme, Maulana Shah Ajmal Farooq Nadwi delivered the vote of thanks.
-                    </p>
+                    <p>At the conclusion of the programme, Maulana Shah Ajmal Farooq Nadwi delivered the vote of thanks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL 2: Dr. Manzoor Alam Memorial (Urdu) ─── -->
+    <div class="article-modal-backdrop" id="modal2" onclick="closeArticleModal(event)">
+        <div class="article-modal" role="dialog" aria-modal="true" aria-labelledby="modal2Title">
+            <button class="modal-close" onclick="closeModalById('modal2')" aria-label="Close"><i class="fas fa-times"></i></button>
+
+            <!-- Image 1: Main event photo -->
+            <div class="modal-img-wrap">
+                <img src="images/alam_memorial_1.jpeg" alt="ڈاکٹر منظور عالم یادگاری پروگرام، کانسٹی ٹیوشن کلب">
+                <div class="modal-img-fade"></div>
+                <div class="modal-img-caption"><span class="news-tag" style="position:relative;z-index:2">پریس ریلیز</span></div>
+            </div>
+
+            <div class="modal-body">
+                <time class="news-date" style="direction:ltr;display:flex;align-items:center;gap:6px">
+                    <i class="far fa-calendar-alt"></i> نئی دہلی · 10 مئی 2026
+                </time>
+
+                <h2 class="modal-title" id="modal2Title" style="direction:rtl;text-align:right;line-height:1.7;margin-bottom:6px">
+                    ڈاکٹر منظور عالم کی حیات اور میراث پر اہم پروگرام
+                </h2>
+                <p style="direction:rtl;text-align:right;color:var(--accent);font-size:0.9rem;font-weight:600;margin-bottom:24px">
+                    کانسٹی ٹیوشن کلب، نئی دہلی میں ملک و بیرونِ ملک کی شخصیات کا اظہارِ خیال
+                </p>
+
+                <div class="modal-content urdu-content">
+
+                    <p>نئی دہلی، 10 مئی 2026 — سابق سرپرستِ اعلیٰ انسٹی ٹیوٹ آف آبجیکٹیو اسٹڈیز اور جنرل سکریٹری آل انڈیا ملی کونسل کے تخلیقی خیال اور ان کی رہنمائی نے ملک و ملت کو جو کچھ دیا، وہ سنہرے حروف میں تحریر کیے جانے کے لائق ہے۔ کانسٹی ٹیوشن کلب کے اسپیکر ہال میں منعقد یادگاری پروگرام میں ملک و بیرونِ ملک کی قابلِ ذکر شخصیات نے ان کی قربانیوں اور اہم کارناموں کو یاد کرتے ہوئے انہیں خراجِ عقیدت پیش کیا۔</p>
+
+                    <h3>اظہارِ خیال: بین الاقوامی شخصیات</h3>
+
+                    <p><strong>پروفیسر داؤد اے یحییٰ الہدابی</strong> (انٹرنیشنل اسلامک یونیورسٹی ملیشیا) نے کہا کہ ڈاکٹر محمد منظور عالم نے ایک تعلیمی لیڈر کے طور پر گہرا نقش چھوڑا ہے۔ انہوں نے مسلمانوں کی پسماندگی پر توجہ مرکوز کی، بین المذاہب مکالمے کو آگے بڑھایا اور علومِ اسلامی کو سماجیات سے جوڑنے کی کوشش کی۔</p>
+
+                    <p><strong>پروفیسر ڈاکٹر جاسر عودہ</strong> (صدر، مقاصد انسٹی ٹیوٹ گلوبل، امریکہ) نے کہا کہ ڈاکٹر منظور عالم کی فکر صرف ہندوستان تک محدود نہیں تھی بلکہ دنیا بھر میں اس کی گونج سنائی دیتی تھی۔ انہوں نے اوقاف اور اسلامی معاشیات کے مطالعے میں بڑی کوششیں کیں اور مدینہ منورہ میں قیام کے دوران قرآنِ کریم کے انگریزی ترجمے میں بھی اپنا اشتراک کیا۔</p>
+
+                    <p><strong>ڈاکٹر عبداللہ اللحیدان</strong> (وزارتِ تعلیم، حکومتِ سعودی عرب) نے آن لائن خطاب میں کہا کہ ڈاکٹر منظور عالم نے سعودی عرب میں وزارتِ معاشیات سے اپنی ملازمت کا آغاز کیا۔ انہوں نے سماجیات اور معاشیات کو میڈیا سے مربوط کیا، اور ان کے کاموں کی گونج پاکستان، بنگلہ دیش، جدہ اور ملیشیا تک سنائی دیتی ہے۔</p>
+
+                    <h3>ہندوستانی شخصیات کا اظہارِ خیال</h3>
+
+                    <p><strong>سید سعادت اللہ حسینی</strong> (امیر، جماعت اسلامی ہند) نے کہا کہ ڈاکٹر منظور عالم کا علمی، فکری اور تحقیقی کام نہایت اہم ہے۔ وہ اختراعی منصوبوں کو عملی شکل دینے میں مہارت رکھتے تھے اور عالمی روابط کو مؤثر انداز میں استعمال کرتے تھے۔ اللہ تعالیٰ ان کے تمام کاموں کو امت کے لیے صدقۂ جاریہ بنائے۔</p>
+
+                    <p><strong>مولانا خلیل الرحمن سجاد نعمانی</strong> (رکنِ تاسیسی، آل انڈیا ملی کونسل) نے کہا کہ ڈاکٹر منظور عالم نے ہمیشہ اختلافِ رائے کی قدر کی اور مختلف رجحانات کے لوگوں کو یکجا کیا۔ حضرت مولانا قاضی مجاہد الاسلام قاسمیؒ کے شانہ بشانہ کام کرتے رہے اور ان کے اندر توافق و تعاون کا حسین مزاج تھا۔</p>
+
+                    <p><strong>سلمان خورشید</strong> (سابق وزیرِ خارجہ، صدر انڈیا اسلامک کلچرل سینٹر) نے کہا کہ ڈاکٹر منظور عالم ہندوستان کے مستقبل کو محفوظ بنانے کے لیے فکرمند رہتے تھے۔ سچر کمیٹی اور کنڈو کمیٹی کے ساتھ فکری سطح پر غیر معمولی تعاون فراہم کیا۔</p>
+
+                    <p><strong>ڈاکٹر اخترالواسع</strong> (پروفیسر ایمریٹس، جامعہ ملیہ اسلامیہ) نے کہا کہ ڈاکٹر منظور عالم نے آئی او ایس جیسا تھنک ٹینک قائم کرکے ایک عہد ساز کارنامہ انجام دیا اور مختلف الخیال افراد کو یکجا کیا۔</p>
+
+                    <p><strong>منی شنکر ایر</strong> (سابق مرکزی وزیر) نے کہا کہ ان کے ڈاکٹر منظور عالم سے گہرے تعلقات تھے۔ وہ غیر جانبدارانہ انداز میں ملک و قوم کی خدمت انجام دیتے تھے۔</p>
+
+                    <p><strong>ڈاکٹر جان دیال</strong> (معروف صحافی و عیسائی لیڈر) نے کہا کہ ڈاکٹر منظور عالم کی زندگی منفرد تھی۔ وہ دوسری برادریوں کو بھی ساتھ لے کر چلنے اور فرقہ وارانہ ہم آہنگی کے فروغ کے لیے مسلسل جدوجہد کرتے رہے۔</p>
+
+                    <!-- Image 2: Attendees photo -->
+                    <div class="modal-inline-img">
+                        <img src="images/alam_memorial_2.jpeg" alt="پروگرام میں شریک شخصیات">
+                        <p class="modal-inline-caption">پروگرام میں شریک ملک و بیرونِ ملک کی نامور شخصیات</p>
+                    </div>
+
+                    <h3>دیگر شخصیات کا اظہارِ خیال</h3>
+
+                    <p>اس موقع پر ملک کی متعدد ممتاز شخصیات نے بھی اپنے خیالات کا اظہار کیا:</p>
+
+                    <ul class="modal-speakers-list">
+                        <li><strong>مولانا انیس الرحمن قاسمی</strong> — کارگزار صدر، آل انڈیا ملی کونسل</li>
+                        <li><strong>مولانا فضل الرحیم مجددی</strong> — جنرل سکریٹری، مسلم پرسنل لا بورڈ</li>
+                        <li><strong>مولانا عتیق احمد بستوی</strong> — سکریٹری برائے علمی امور، اسلامک فقہ اکیڈمی</li>
+                        <li><strong>پروفیسر حسینہ حاشیہ</strong> — وائس چیئرپرسن، آئی او ایس</li>
+                        <li><strong>ڈاکٹر محمد افضل وانی</strong> — چیئرمین، آئی او ایس</li>
+                        <li><strong>پروفیسر عمر حسن کاسولے</strong> — سکریٹری جنرل، انٹرنیشنل انسٹی ٹیوٹ آف اسلامک تھاٹس، سعودی عرب</li>
+                        <li><strong>پروفیسر ایم ایچ قریشی</strong> — جامعہ ملیہ اسلامیہ</li>
+                        <li><strong>ڈاکٹر علی محی الدین القرہ داغی</strong> — چیئرمین، انٹرنیشنل یونین آف مسلم لیڈرس، قطر</li>
+                        <li><strong>شیخ نظام الدین</strong> — معاون جنرل سکریٹری، آل انڈیا ملی کونسل</li>
+                        <li><strong>اقبال احمد</strong> — بی بی سی نامہ نگار</li>
+                        <li><strong>اے یو آصف</strong> — معروف صحافی</li>
+                        <li><strong>پیوش بابلے</strong> — تجزیہ کار و مصنف، بھوپال</li>
+                        <li><strong>ڈاکٹر آفتاب عالم</strong> — چیئرمین، کٹیہار میڈیکل کالج، سابق رکن پارلیمان (راجیہ سبھا)</li>
+                        <li><strong>احمد اشفاق کریم</strong> — سابق رکن پارلیمان</li>
+                        <li><strong>محمد سلیم</strong> — سابق رکن پارلیمان</li>
+                    </ul>
+
+                    <p>تمام مقررین نے ڈاکٹر منظور عالم کی خدمات کا اعتراف کیا اور ان کے اہلِ خانہ کے ساتھ اظہارِ ہمدردی کیا۔ آئی او ایس کے سکریٹری جنرل محمد عالم، آل انڈیا ملی کونسل، اسلامک فقہ اکیڈمی، تعاون ٹرسٹ اور فیچر و نیوز الائنس کے کارکنان نے پروگرام کی کامیابی میں اہم کردار ادا کیا۔</p>
+
+                    <p>اس پروگرام کی نظامت شیخ نظام الدین، اسسٹنٹ جنرل سکریٹری آل انڈیا ملی کونسل، نے کی۔ چار گھنٹے تک جاری رہنے والا یہ پروگرام مولانا انیس الرحمن قاسمی کی دعاؤں پر اختتام پذیر ہوا۔</p>
+
+                    <div class="news-urdu-byline" style="border-top:1px solid var(--border);padding-top:16px;margin-top:24px">
+                        جاری کردہ: شعبۂ نشر و اشاعت، آل انڈیا ملی کونسل
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // ─── Article modal ───
-        const modal = document.getElementById('articleModal');
-        function openArticleModal() {
-            modal.classList.add('open');
-            document.body.style.overflow = 'hidden';
-            modal.scrollTop = 0;
+        // ─── HERO AUTO-SLIDER ───
+        let heroIdx = 0;
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        const heroDots   = document.querySelectorAll('.hsd');
+
+        function heroGoTo(n) {
+            heroSlides[heroIdx].classList.remove('active');
+            heroDots[heroIdx].classList.remove('active');
+            heroIdx = (n + heroSlides.length) % heroSlides.length;
+            heroSlides[heroIdx].classList.add('active');
+            heroDots[heroIdx].classList.add('active');
         }
-        function closeArticleModal(e) {
-            if (e && e.target !== modal) return;
-            modal.classList.remove('open');
+
+        let heroTimer = setInterval(() => heroGoTo(heroIdx + 1), 4000);
+
+        // Pause on hover
+        document.getElementById('heroSlider').addEventListener('mouseenter', () => clearInterval(heroTimer));
+        document.getElementById('heroSlider').addEventListener('mouseleave', () => {
+            heroTimer = setInterval(() => heroGoTo(heroIdx + 1), 4000);
+        });
+
+        // ─── NEWS CAROUSEL ───
+        let newsIdx = 0;
+        const newsSlides = document.querySelectorAll('.news-slide');
+        const newsDots   = document.querySelectorAll('.nd');
+
+        function newsGoTo(n) {
+            newsSlides[newsIdx].classList.remove('active');
+            newsDots[newsIdx].classList.remove('active');
+            newsIdx = (n + newsSlides.length) % newsSlides.length;
+            newsSlides[newsIdx].classList.add('active');
+            newsDots[newsIdx].classList.add('active');
+        }
+
+        function newsNav(dir) { newsGoTo(newsIdx + dir); }
+
+        // ─── MODALS ───
+        function openArticleModal(id) {
+            const m = document.getElementById(id);
+            if (!m) return;
+            m.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            m.scrollTop = 0;
+        }
+
+        function closeModalById(id) {
+            const m = document.getElementById(id);
+            if (!m) return;
+            m.classList.remove('open');
             document.body.style.overflow = '';
         }
+
+        function closeArticleModal(e) {
+            // close whichever backdrop was clicked directly
+            if (e && e.target && e.target.classList.contains('article-modal-backdrop')) {
+                e.target.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
         document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeArticleModal();
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.article-modal-backdrop.open').forEach(m => {
+                    m.classList.remove('open');
+                });
+                document.body.style.overflow = '';
+            }
         });
 
         // ─── Language toggle (Aims & Objectives) ───
