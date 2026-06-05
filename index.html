@@ -1136,6 +1136,12 @@
 
         .news-slide {
             display: none;
+            animation: newsFadeIn 0.5s ease;
+        }
+
+        @keyframes newsFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .news-slide.active {
@@ -1330,6 +1336,85 @@
             .news-urdu-body {
                 padding: 24px;
             }
+        }
+
+        /* ─── STORY 3 ELEMENTS ─── */
+        .story3-quote {
+            margin: 16px 0 18px;
+            padding: 16px 20px;
+            background: rgba(15, 188, 131, 0.07);
+            border-left: 4px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+        }
+
+        .story3-quote p {
+            color: var(--text);
+            font-size: 0.92rem;
+            line-height: 1.75;
+            font-style: italic;
+            margin-bottom: 6px;
+        }
+
+        .story3-quote cite {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .story3-btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        .story3-ext {
+            background: rgba(8, 145, 178, 0.1) !important;
+            border-color: rgba(8, 145, 178, 0.35) !important;
+            color: var(--accent2) !important;
+        }
+
+        .story3-ext:hover {
+            background: var(--accent2) !important;
+            color: #fff !important;
+            border-color: var(--accent2) !important;
+            box-shadow: 0 8px 22px rgba(8, 145, 178, 0.3) !important;
+        }
+
+        /* Modal external link block */
+        .modal-ext-link-wrap {
+            margin-top: 28px;
+            padding: 20px 22px;
+            background: rgba(8, 145, 178, 0.06);
+            border: 1px solid rgba(8, 145, 178, 0.2);
+            border-radius: 14px;
+        }
+
+        .modal-ext-link-wrap p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 14px !important;
+        }
+
+        .modal-ext-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 12px 24px;
+            border-radius: 999px;
+            background: var(--accent2);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 20px rgba(8, 145, 178, 0.3);
+        }
+
+        .modal-ext-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(8, 145, 178, 0.45);
         }
 
         /* ─── REVEAL ANIMATION ─── */
@@ -1598,12 +1683,46 @@
                         </div>
                     </div>
 
+                    <!-- Story 3: IOS Memorial — English with quote -->
+                    <div class="news-slide" id="newsSlide2">
+                        <div class="news-card">
+                            <div class="news-img">
+                                <img src="images/alam_memorial_1.jpeg" alt="Memorial Programme – Dr. Mohammad Manzoor Alam" loading="lazy">
+                                <div class="news-img-overlay"></div>
+                            </div>
+                            <div class="news-body">
+                                <span class="news-tag">IOS Report</span>
+                                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>New Delhi · May 9, 2026</time>
+                                <h2 class="news-title">Remembering Dr. Mohammad Manzoor Alam: A Legacy That Lives On</h2>
+
+                                <!-- Hadith quote -->
+                                <blockquote class="story3-quote">
+                                    <p>"When a person dies, his deeds end except three: ongoing charity, beneficial knowledge, and a righteous child who prays for him."</p>
+                                    <cite>— Sahih Muslim</cite>
+                                </blockquote>
+
+                                <p>A memorial programme was jointly organised by IOS, Ta'awun Trust, All India Milli Council and Islamic Fiqh Academy (India) at the Speaker Hall, Constitution Club of India, on May 9, 2026, to honour the life, vision, and lasting contributions of Dr. Mohammad Manzoor Alam — scholar, institution-builder, and champion of justice.</p>
+
+                                <div class="story3-btns">
+                                    <button class="read-more-btn" onclick="openArticleModal('modal3')">
+                                        Read Full Report <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                    <a href="https://www.iosworld.org/recentactivitydetails.aspx?raid=681"
+                                       target="_blank" rel="noopener" class="read-more-btn story3-ext">
+                                        View on IOS Website <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- Dots indicator -->
                 <div class="news-dots">
                     <span class="nd active" onclick="newsGoTo(0)"></span>
                     <span class="nd" onclick="newsGoTo(1)"></span>
+                    <span class="nd" onclick="newsGoTo(2)"></span>
                 </div>
 
             </div>
@@ -1841,6 +1960,55 @@
         </div>
     </div>
 
+    <!-- ─── MODAL 3: IOS Memorial Report (English) ─── -->
+    <div class="article-modal-backdrop" id="modal3" onclick="closeArticleModal(event)">
+        <div class="article-modal" role="dialog" aria-modal="true" aria-labelledby="modal3Title">
+            <button class="modal-close" onclick="closeModalById('modal3')" aria-label="Close"><i class="fas fa-times"></i></button>
+
+            <div class="modal-img-wrap">
+                <img src="images/alam_memorial_1.jpeg" alt="Memorial Programme – Dr. Mohammad Manzoor Alam">
+                <div class="modal-img-fade"></div>
+                <div class="modal-img-caption"><span class="news-tag" style="position:relative;z-index:2">IOS Report</span></div>
+            </div>
+
+            <div class="modal-body">
+                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>New Delhi · May 9, 2026</time>
+                <h2 class="modal-title" id="modal3Title">Remembering Dr. Mohammad Manzoor Alam: A Legacy That Lives On</h2>
+
+                <!-- Hadith opening quote -->
+                <blockquote class="modal-quote" style="margin-bottom:24px">
+                    <p style="color:var(--text);font-size:1rem;line-height:1.8;margin-bottom:8px">
+                        "When a person dies, his deeds end except three: ongoing charity, beneficial knowledge, and a righteous child who prays for him."
+                    </p>
+                    <p class="quote-trans">— Sahih Muslim</p>
+                </blockquote>
+
+                <div class="modal-content">
+                    <p>Join us in reflecting on the life, vision, and lasting contributions of a scholar, institution-builder, and champion of justice whose work continues to benefit society.</p>
+
+                    <h3>About the Programme</h3>
+                    <p><strong>New Delhi:</strong> A memorial programme to honour and remember the Life and Legacy of the Founding Chairman and Chief Patron of the Institute of Objective Studies (IOS), Dr. Mohammad Manzoor Alam, was jointly organised by the IOS, Ta'awun Trust, All India Milli Council and Islamic Fiqh Academy (India), at the Speaker Hall, Constitution Club of India, on <strong>May 9, 2026</strong>.</p>
+
+                    <h3>About Dr. Mohammad Manzoor Alam</h3>
+                    <p>Dr. Mohammad Manzoor Alam — a thinker, social scientist, and institution-builder — was the founding chairman of the Institute of Objective Studies (IOS). He left for his heavenly abode on <strong>January 13, 2026</strong>, leaving behind a rich legacy of scholarship, institution-building, and service to the community.</p>
+
+                    <h3>Opening of the Programme</h3>
+                    <p>The memorial programme began with the recitation of a verse from the Holy Qur'an by <strong>Hafiz Hammad Kaleem Alam</strong>, the grandson of the late Dr. Mohammad Manzoor Alam.</p>
+
+                    <!-- External link CTA -->
+                    <div class="modal-ext-link-wrap">
+                        <p>Read the full detailed report on the IOS website:</p>
+                        <a href="https://www.iosworld.org/recentactivitydetails.aspx?raid=681"
+                           target="_blank" rel="noopener" class="modal-ext-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            View Full Report on IOS Website
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // ─── HERO AUTO-SLIDER ───
         let heroIdx = 0;
@@ -1876,10 +2044,27 @@
             newsDots[newsIdx].classList.add('active');
         }
 
-        function newsNav(dir) { newsGoTo(newsIdx + dir); }
+        function newsNav(dir) {
+            clearInterval(newsTimer);
+            newsGoTo(newsIdx + dir);
+            newsTimer = setInterval(() => newsGoTo(newsIdx + 1), 6000);
+        }
 
-        // ─── MODALS ───
+        // Auto-slide every 6 seconds
+        let newsTimer = setInterval(() => newsGoTo(newsIdx + 1), 6000);
+
+        // Pause on hover over carousel
+        const newsWrap = document.querySelector('.news-carousel-wrap');
+        if (newsWrap) {
+            newsWrap.addEventListener('mouseenter', () => clearInterval(newsTimer));
+            newsWrap.addEventListener('mouseleave', () => {
+                newsTimer = setInterval(() => newsGoTo(newsIdx + 1), 6000);
+            });
+        }
+
+        // Pause when a modal is open, resume when closed
         function openArticleModal(id) {
+            clearInterval(newsTimer);
             const m = document.getElementById(id);
             if (!m) return;
             m.classList.add('open');
@@ -1892,6 +2077,7 @@
             if (!m) return;
             m.classList.remove('open');
             document.body.style.overflow = '';
+            newsTimer = setInterval(() => newsGoTo(newsIdx + 1), 6000);
         }
 
         function closeArticleModal(e) {
