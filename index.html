@@ -2045,26 +2045,41 @@
         }
 
         function newsNav(dir) {
-            clearInterval(newsTimer);
+            stopNewsTimer();
             newsGoTo(newsIdx + dir);
-            newsTimer = setInterval(() => newsGoTo(newsIdx + 1), 6000);
+            startNewsTimer();
         }
 
         // Auto-slide every 6 seconds
-        let newsTimer = setInterval(() => newsGoTo(newsIdx + 1), 6000);
+        let newsTimer = null;
 
-        // Pause on hover over carousel
+        function startNewsTimer() {
+            stopNewsTimer();
+            newsTimer = setInterval(() => newsGoTo(newsIdx + 1), 6000);
+        }
+
+        function stopNewsTimer() {
+            clearInterval(newsTimer);
+            newsTimer = null;
+        }
+
+        startNewsTimer();
+
+        // Pause on hover — only stop/start when cursor truly enters/leaves the wrap
         const newsWrap = document.querySelector('.news-carousel-wrap');
         if (newsWrap) {
-            newsWrap.addEventListener('mouseenter', () => clearInterval(newsTimer));
-            newsWrap.addEventListener('mouseleave', () => {
-                newsTimer = setInterval(() => newsGoTo(newsIdx + 1), 6000);
+            newsWrap.addEventListener('mouseenter', stopNewsTimer);
+            newsWrap.addEventListener('mouseleave', (e) => {
+                // Only restart if we've genuinely left the wrap (not moved to a child)
+                if (!newsWrap.contains(e.relatedTarget)) {
+                    startNewsTimer();
+                }
             });
         }
 
         // Pause when a modal is open, resume when closed
         function openArticleModal(id) {
-            clearInterval(newsTimer);
+            stopNewsTimer();
             const m = document.getElementById(id);
             if (!m) return;
             m.classList.add('open');
@@ -2077,14 +2092,14 @@
             if (!m) return;
             m.classList.remove('open');
             document.body.style.overflow = '';
-            newsTimer = setInterval(() => newsGoTo(newsIdx + 1), 6000);
+            startNewsTimer();
         }
 
         function closeArticleModal(e) {
-            // close whichever backdrop was clicked directly
             if (e && e.target && e.target.classList.contains('article-modal-backdrop')) {
                 e.target.classList.remove('open');
                 document.body.style.overflow = '';
+                startNewsTimer();
             }
         }
 
@@ -2094,6 +2109,7 @@
                     m.classList.remove('open');
                 });
                 document.body.style.overflow = '';
+                startNewsTimer();
             }
         });
 
