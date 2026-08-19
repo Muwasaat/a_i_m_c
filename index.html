@@ -14,8 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
         rel="stylesheet">
-    <link rel="preload" as="style"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -1016,7 +1015,7 @@
             color: var(--muted);
             font-style: italic;
             padding: 10px 14px;
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             margin: 0 !important;
             direction: rtl;
         }
@@ -1036,7 +1035,7 @@
             color: var(--muted);
             line-height: 1.6;
             padding: 8px 12px;
-            background: rgba(255,255,255,0.03);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border);
             border-radius: 8px;
         }
@@ -1140,8 +1139,15 @@
         }
 
         @keyframes newsFadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to   { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .news-slide.active {
@@ -1417,6 +1423,93 @@
             box-shadow: 0 10px 28px rgba(8, 145, 178, 0.45);
         }
 
+        /* ─── FOUNDERS ─── */
+        .founders-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 760px;
+            margin-inline: auto;
+        }
+
+        .founder-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+        }
+
+        .founder-img-wrap {
+            position: relative;
+            height: 320px;
+            overflow: hidden;
+        }
+
+        .founder-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .founder-card:hover .founder-img-wrap img {
+            transform: scale(1.04);
+        }
+
+        .founder-img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(5, 13, 26, 0.82) 100%);
+        }
+
+        .founder-body {
+            padding: 20px 22px 24px;
+            text-align: center;
+        }
+
+        .founder-role {
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .founder-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        .founder-org {
+            font-size: 0.84rem;
+            color: var(--muted);
+        }
+
+        @media (max-width: 600px) {
+            .founders-grid {
+                grid-template-columns: 1fr;
+                max-width: 380px;
+            }
+
+            .founder-img-wrap {
+                height: 260px;
+            }
+        }
+
         /* ─── REVEAL ANIMATION ─── */
         .reveal {
             opacity: 0;
@@ -1477,8 +1570,13 @@
                 grid-column: 1 / -1;
             }
 
-            .news-prev { left: -10px; }
-            .news-next { right: -10px; }
+            .news-prev {
+                left: -10px;
+            }
+
+            .news-next {
+                right: -10px;
+            }
         }
 
         @media (max-width: 600px) {
@@ -1600,7 +1698,13 @@
                                 <div class="hero-slide-caption">Constitution Rights of Minorities</div>
                             </div>
                             <div class="hero-slide" style="background-image:url('images/alam_memorial_collage.jpeg')">
-                                <img src="images/alam_memorial_collage.jpeg" alt="Memorial of Dr. Mohammad Manzoor Alam">
+                                <img src="images/alam_memorial_collage_1.jpeg"
+                                    alt="Memorial of Dr. Mohammad Manzoor Alam">
+                                <div class="hero-slide-caption">Memorial of Dr. Mohammad Manzoor Alam</div>
+                            </div>
+                            <div class="hero-slide" style="background-image:url('images/alam_memorial_collage_2.jpeg')">
+                                <img src="images/alam_memorial_collage_2.jpeg"
+                                    alt="Memorial of Dr. Mohammad Manzoor Alam">
                                 <div class="hero-slide-caption">Memorial of Dr. Mohammad Manzoor Alam</div>
                             </div>
                             <div class="hero-slide" style="background-image:url('images/dr_alam_sonia.jpeg')">
@@ -1615,6 +1719,10 @@
                                 <img src="images/hero2.jpeg" alt="National Convention – Save the Constitution">
                                 <div class="hero-slide-caption">National Convention – Save the Constitution</div>
                             </div>
+                            <div class="hero-slide" style="background-image:url('images/national_executive_body_meeting.jpeg')">
+                                <img src="images/national_executive_body_meeting.jpeg" alt="National Executive Body Meeting">
+                                <div class="hero-slide-caption">National Executive Body Meeting</div>
+                            </div>
                         </div>
                         <div class="hero-slider-dots" id="heroSliderDots">
                             <span class="hsd active" onclick="heroGoTo(0)"></span>
@@ -1624,6 +1732,8 @@
                             <span class="hsd" onclick="heroGoTo(4)"></span>
                             <span class="hsd" onclick="heroGoTo(5)"></span>
                             <span class="hsd" onclick="heroGoTo(6)"></span>
+                            <span class="hsd" onclick="heroGoTo(7)"></span>
+                            <span class="hsd" onclick="heroGoTo(8)"></span>
                         </div>
                         <div class="stat-pill">
                             <span class="stat-number">1992</span>
@@ -1663,13 +1773,20 @@
                             </div>
                             <div class="news-body">
                                 <span class="news-tag">Condolence</span>
-                                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>New Delhi · April 15, 2026</time>
-                                <h2 class="news-title">AIMC Mourns the Passing of Maulana Hakim Mohammad Abdullah Mughesi</h2>
-                                <p>A condolence meeting to mourn the demise of the President of the All India Milli Council (AIMC), Maulana Hakim Mohammad Abdullah Mughesi, was organised at the Institute of Objective Studies, New Delhi, on April 15, 2026.</p>
+                                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>New
+                                    Delhi · April 15, 2026</time>
+                                <h2 class="news-title">AIMC Mourns the Passing of Maulana Hakim Mohammad Abdullah
+                                    Mughesi</h2>
+                                <p>A condolence meeting to mourn the demise of the President of the All India Milli
+                                    Council (AIMC), Maulana Hakim Mohammad Abdullah Mughesi, was organised at the
+                                    Institute of Objective Studies, New Delhi, on April 15, 2026.</p>
                                 <h3>Opening Tributes</h3>
-                                <p>Maulana Mughesi was remembered as a great leader, scholar, and institution builder who served as AIMC President for 21 years, dedicating his life to education, interfaith dialogue, and community welfare.</p>
+                                <p>Maulana Mughesi was remembered as a great leader, scholar, and institution builder
+                                    who served as AIMC President for 21 years, dedicating his life to education,
+                                    interfaith dialogue, and community welfare.</p>
                                 <h3>A Lifetime of Service</h3>
-                                <p>Scholars, educators, and leaders from across India recalled his tireless efforts in establishing madarsas and promoting Islamic and contemporary education.</p>
+                                <p>Scholars, educators, and leaders from across India recalled his tireless efforts in
+                                    establishing madarsas and promoting Islamic and contemporary education.</p>
                                 <button class="read-more-btn" onclick="openArticleModal('modal1')">
                                     Read Full Story <i class="fas fa-arrow-right"></i>
                                 </button>
@@ -1681,17 +1798,24 @@
                     <div class="news-slide" id="newsSlide1">
                         <div class="news-card-urdu">
                             <div class="news-urdu-images">
-                                <img src="images/alam_memorial_1.jpeg" alt="ڈاکٹر منظور عالم یادگاری پروگرام" loading="lazy">
+                                <img src="images/alam_memorial_1.jpeg" alt="ڈاکٹر منظور عالم یادگاری پروگرام"
+                                    loading="lazy">
                                 <img src="images/alam_memorial_2.jpeg" alt="کانسٹی ٹیوشن کلب، نئی دہلی" loading="lazy">
                             </div>
                             <div class="news-urdu-body">
                                 <span class="news-tag">پریس ریلیز</span>
-                                <time class="news-date" style="justify-content:flex-end;direction:ltr"><i class="far fa-calendar-alt"></i>&nbsp;نئی دہلی · 10 مئی 2026</time>
+                                <time class="news-date" style="justify-content:flex-end;direction:ltr"><i
+                                        class="far fa-calendar-alt"></i>&nbsp;نئی دہلی · 10 مئی 2026</time>
                                 <h2 class="news-urdu-title">ڈاکٹر منظور عالم کی حیات اور میراث پر اہم پروگرام</h2>
-                                <p>کانسٹی ٹیوشن کلب کے اسپیکر ہال میں منعقد یادگاری پروگرام میں ملک وبیرون ملک کی قابل ذکر شخصیات نے ڈاکٹر منظور عالم کی قربانیوں اور اہم کارناموں کو یاد کرتے ہوئے انھیں خراج عقیدت پیش کیا۔</p>
-                                <p>انٹرنیشنل اسلامک یونیورسٹی ملیشیا کے پروفیسر داؤد اے یحییٰ الہدابی نے کہا کہ ڈاکٹر محمد منظور عالم نے تعلیمی لیڈر کے طور پر ایک نقش چھوڑا ہے اور بین مذہبی مذاکرات کو آگے بڑھایا۔</p>
+                                <p>کانسٹی ٹیوشن کلب کے اسپیکر ہال میں منعقد یادگاری پروگرام میں ملک وبیرون ملک کی قابل
+                                    ذکر شخصیات نے ڈاکٹر منظور عالم کی قربانیوں اور اہم کارناموں کو یاد کرتے ہوئے انھیں
+                                    خراج عقیدت پیش کیا۔</p>
+                                <p>انٹرنیشنل اسلامک یونیورسٹی ملیشیا کے پروفیسر داؤد اے یحییٰ الہدابی نے کہا کہ ڈاکٹر
+                                    محمد منظور عالم نے تعلیمی لیڈر کے طور پر ایک نقش چھوڑا ہے اور بین مذہبی مذاکرات کو
+                                    آگے بڑھایا۔</p>
                                 <div class="news-urdu-byline">جاری کردہ — شعبہ نشرواشاعت، آل انڈیا ملی کونسل</div>
-                                <button class="read-more-btn" style="margin-top:20px" onclick="openArticleModal('modal2')">
+                                <button class="read-more-btn" style="margin-top:20px"
+                                    onclick="openArticleModal('modal2')">
                                     پوری خبر پڑھیں <i class="fas fa-arrow-left"></i>
                                 </button>
                             </div>
@@ -1702,28 +1826,35 @@
                     <div class="news-slide" id="newsSlide2">
                         <div class="news-card">
                             <div class="news-img">
-                                <img src="images/alam_memorial_1.jpeg" alt="Memorial Programme – Dr. Mohammad Manzoor Alam" loading="lazy">
+                                <img src="images/alam_memorial_1.jpeg"
+                                    alt="Memorial Programme – Dr. Mohammad Manzoor Alam" loading="lazy">
                                 <div class="news-img-overlay"></div>
                             </div>
                             <div class="news-body">
                                 <span class="news-tag">IOS Report</span>
-                                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>New Delhi · May 9, 2026</time>
-                                <h2 class="news-title">Remembering Dr. Mohammad Manzoor Alam: A Legacy That Lives On</h2>
+                                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>New
+                                    Delhi · May 9, 2026</time>
+                                <h2 class="news-title">Remembering Dr. Mohammad Manzoor Alam: A Legacy That Lives On
+                                </h2>
 
                                 <!-- Hadith quote -->
                                 <blockquote class="story3-quote">
-                                    <p>"When a person dies, his deeds end except three: ongoing charity, beneficial knowledge, and a righteous child who prays for him."</p>
+                                    <p>"When a person dies, his deeds end except three: ongoing charity, beneficial
+                                        knowledge, and a righteous child who prays for him."</p>
                                     <cite>— Sahih Muslim</cite>
                                 </blockquote>
 
-                                <p>A memorial programme was jointly organised by IOS, Ta'awun Trust, All India Milli Council and Islamic Fiqh Academy (India) at the Speaker Hall, Constitution Club of India, on May 9, 2026, to honour the life, vision, and lasting contributions of Dr. Mohammad Manzoor Alam — scholar, institution-builder, and champion of justice.</p>
+                                <p>A memorial programme was jointly organised by IOS, Ta'awun Trust, All India Milli
+                                    Council and Islamic Fiqh Academy (India) at the Speaker Hall, Constitution Club of
+                                    India, on May 9, 2026, to honour the life, vision, and lasting contributions of Dr.
+                                    Mohammad Manzoor Alam — scholar, institution-builder, and champion of justice.</p>
 
                                 <div class="story3-btns">
                                     <button class="read-more-btn" onclick="openArticleModal('modal3')">
                                         Read Full Report <i class="fas fa-arrow-right"></i>
                                     </button>
                                     <a href="https://www.iosworld.org/recentactivitydetails.aspx?raid=681"
-                                       target="_blank" rel="noopener" class="read-more-btn story3-ext">
+                                        target="_blank" rel="noopener" class="read-more-btn story3-ext">
                                         View on IOS Website <i class="fas fa-external-link-alt"></i>
                                     </a>
                                 </div>
@@ -1731,154 +1862,299 @@
                         </div>
                     </div>
 
-                </div>
+                    <!-- Story 4: Urdu tribute by Ashraf Ali Bastawi -->
+                    <div class="news-slide" id="newsSlide3">
+                        <div class="news-card">
+                            <div class="news-img">
+                                <img src="images/dr_manzoor_alam.jpeg" alt="ڈاکٹر محمد منظور عالم" loading="lazy">
+                                <div class="news-img-overlay"></div>
+                            </div>
+                            <div class="news-body">
+                                <span class="news-tag" style="direction:rtl">تعزیتی مضمون</span>
+                                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>جنوری 2026</time>
+                                <h2 class="news-title" style="direction:rtl;text-align:right;line-height:1.8;font-size:clamp(1.1rem,2vw,1.5rem)">
+                                    ملتِ اسلامیہ ہند میں ریسرچ کی اسپرٹ کو فروغ دینے والا آج رخصت ہو گیا
+                                </h2>
+                                <p style="direction:rtl;text-align:right;font-size:0.88rem;color:var(--accent);font-weight:600;margin-bottom:10px">
+                                    از: اشرف علی بستوی</p>
+                                <p style="direction:rtl;text-align:right;color:var(--muted);font-size:0.94rem;line-height:2">
+                                    ڈاکٹر منظور عالم صاحب اُن شخصیات میں سے تھے جنہوں نے بابری مسجد کی شہادت کے بعد کے ہندوستان کو بہت قریب سے دیکھا اور سمجھا۔ انہوں نے تحقیق کے عمل کو فروغ دیا تاکہ ملی مسائل پر گفتگو مستند حوالوں اور ٹھوس دلائل پر مبنی ہو۔
+                                </p>
+                                <button class="read-more-btn" style="margin-top:20px" onclick="openArticleModal('modal4')">
+                                    پورا مضمون پڑھیں <i class="fas fa-arrow-left"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story 5: National Executive Body Meeting -->
+                    <div class="news-slide" id="newsSlide4">
+                        <div class="news-card-urdu">
+                            <div class="news-urdu-images">
+                                <img src="images/national_executive_body_meeting_1.jpeg" alt="مجلس عاملہ اجلاس" loading="lazy">
+                                <img src="images/national_executive_body_meeting_2.jpeg" alt="مجلس عاملہ نئی دہلی" loading="lazy">
+                            </div>
+                            <div class="news-urdu-body">
+                                <span class="news-tag">پریس ریلیز</span>
+                                <time class="news-date" style="justify-content:flex-end;direction:ltr"><i class="far fa-calendar-alt"></i>&nbsp;نئی دہلی · 22 جولائی 2026</time>
+                                <h2 class="news-urdu-title">آل انڈیا ملی کونسل کی مجلس عاملہ کا اہم اجلاس نئی دہلی میں منعقد</h2>
+                                <p>دستور، جمہوریت، مذہبی آزادی، وقف، یکساں سول کوڈ، مدارس، مساجد اور تعلیمی چیلنجز پر تفصیلی غور کے بعد متعدد اہم قراردادیں منظور کی گئیں۔</p>
+                                <p>اجلاس کارگزار صدر مولانا انیس الرحمن قاسمی کی صدارت میں انسٹی ٹیوٹ آڈیٹوریم، جامعہ نگر، نئی دہلی میں منعقد ہوا۔ ملک بھر سے کونسل کے ذمہ داران، مجلس عاملہ کے اراکین اور مختلف ریاستوں کے نمائندگان نے شرکت کی۔</p>
+                                <div class="news-urdu-byline">جاری کردہ — شعبہ نشرواشاعت، آل انڈیا ملی کونسل</div>
+                                <button class="read-more-btn" style="margin-top:20px" onclick="openArticleModal('modal5')">
+                                    پوری خبر پڑھیں <i class="fas fa-arrow-left"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story 6: SAJC Campaign -->
+                    <div class="news-slide" id="newsSlide5">
+                        <div class="news-card">
+                            <div class="news-img">
+                                <img src="images/south_asia_justice_campaign.jpeg" alt="SAJC Campaign – Milli Council" loading="lazy">
+                                <div class="news-img-overlay"></div>
+                            </div>
+                            <div class="news-body">
+                                <span class="news-tag">SAJC Campaign</span>
+                                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>August 10, 2026</time>
+                                <h2 class="news-title">Milli Council Calls on Civil Society to Unite Against Injustice, Hate Speech and Alleged Rights Violations</h2>
+                                <p style="color:var(--muted);font-size:0.96rem;line-height:1.75;margin-bottom:10px">
+                                    "ناانصافی پر خاموشی جواب دہی کا متبادل نہیں" — ملّی کونسل
+                                </p>
+                                <p style="color:var(--muted);font-size:0.9rem;line-height:1.7">
+                                    नफरती बयानबाजी और कथित लक्षित कार्रवाई पर मिल्ली काउंसिल ने मांगी जवाबदेही
+                                </p>
+                                <div class="story3-btns">
+                                    <a href="https://indianow.me/2026/08/10/protect-justice-equality-and-diversity-milli-council-voices-alarm-over-sajc-quarterly-findings/"
+                                       target="_blank" rel="noopener" class="read-more-btn story3-ext">
+                                        Read Full Report <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /.news-carousel-wrap -->
 
                 <!-- Dots indicator -->
                 <div class="news-dots">
                     <span class="nd active" onclick="newsGoTo(0)"></span>
                     <span class="nd" onclick="newsGoTo(1)"></span>
                     <span class="nd" onclick="newsGoTo(2)"></span>
+                    <span class="nd" onclick="newsGoTo(3)"></span>
+                    <span class="nd" onclick="newsGoTo(4)"></span>
+                    <span class="nd" onclick="newsGoTo(5)"></span>
                 </div>
 
-            </div>
+            </div><!-- /.container -->
         </section>
 
-        <div class="divider"></div>
+    <div class="divider"></div>
 
-        <!-- ─── AIMS & OBJECTIVES ─── -->
-        <section id="aims">
-            <div class="container">
-                <div class="aims-header">
-                    <div>
-                        <div class="section-label">Who We Are</div>
-                        <h2 class="section-title">Aims &amp; Objectives</h2>
-                        <p class="section-sub">Our guiding principles — available in English and Urdu.</p>
-                    </div>
-                    <div class="lang-toggle">
-                        <span>EN</span>
-                        <label class="switch">
-                            <input type="checkbox" id="langToggle" aria-label="Toggle Urdu">
-                            <span class="slider-track"></span>
-                        </label>
-                        <span>اردو</span>
-                    </div>
+    <!-- ─── AIMS & OBJECTIVES ─── -->
+    <section id="aims">
+        <div class="container">
+            <div class="aims-header">
+                <div>
+                    <div class="section-label">Who We Are</div>
+                    <h2 class="section-title">Aims &amp; Objectives</h2>
+                    <p class="section-sub">Our guiding principles — available in English and Urdu.</p>
                 </div>
-
-                <div class="aims-img-wrap reveal">
-                    <img id="aimsImg" src="images/aims_objective_eng.jpeg" data-en="images/aims_objective_eng.jpeg"
-                        data-ur="images/aims_objective_urdu.jpeg" alt="Aims and Objectives of All India Milli Council"
-                        loading="lazy">
+                <div class="lang-toggle">
+                    <span>EN</span>
+                    <label class="switch">
+                        <input type="checkbox" id="langToggle" aria-label="Toggle Urdu">
+                        <span class="slider-track"></span>
+                    </label>
+                    <span>اردو</span>
                 </div>
             </div>
-        </section>
 
-        <div class="divider"></div>
+            <div class="aims-img-wrap reveal">
+                <img id="aimsImg" src="images/aims_objective_eng.jpeg" data-en="images/aims_objective_eng.jpeg"
+                    data-ur="images/aims_objective_urdu.jpeg" alt="Aims and Objectives of All India Milli Council"
+                    loading="lazy">
+            </div>
+        </div>
+    </section>
 
-        <!-- ─── FOOTER ─── -->
-        <footer id="contact">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-brand">
-                        <img src="images/logoFull.jpeg" alt="All India Milli Council" class="footer-logo-full">
-                        <p class="footer-desc">
-                            Established in 1992 as a united platform for the Muslim community in India — committed to
-                            education, social welfare, unity, and the protection of democratic values.
-                        </p>
+    <div class="divider"></div>
+
+    <!-- ─── FOUNDERS ─── -->
+    <section id="founders">
+        <div class="container">
+            <div class="section-label">Our Legacy</div>
+            <h2 class="section-title">Founders</h2>
+            <p class="section-sub" style="margin-bottom:44px">The visionary leaders who built and shaped All India Milli Council.</p>
+
+            <div class="founders-grid reveal">
+
+                <!-- Founder 1 -->
+                <div class="founder-card">
+                    <div class="founder-img-wrap">
+                        <img src="images/qazi_mujahid.jpeg" alt="Qazi Mujahidul Islam Qasmi" loading="lazy">
+                        <div class="founder-img-overlay"></div>
                     </div>
-
-                    <div class="footer-col">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#news">Current Affairs</a></li>
-                            <li><a href="#aims">Aims &amp; Objectives</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-col">
-                        <h4>Get in Touch</h4>
-                        <div class="footer-contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>161/32, Jogabai, Jamia Nagar, Okhla,<br>New Delhi – 110025, India</span>
-                        </div>
-                        <div class="footer-contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>
-                                <a href="mailto:aimchq@gmail.com">aimchq@gmail.com</a><br>
-                                <a href="mailto:allindiamillicouncil1@gmail.com">allindiamillicouncil1@gmail.com</a>
-                            </span>
-                        </div>
-                        <div class="footer-contact-item">
-                            <i class="fas fa-globe"></i>
-                            <span><a href="https://www.aimcnd.org" target="_blank"
-                                    rel="noopener">www.aimcnd.org</a></span>
-                        </div>
-                        <div class="footer-contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span><a href="tel:+911126980060">011-2698 0060</a></span>
-                        </div>
-                        <div class="footer-contact-item">
-                            <i class="fab fa-whatsapp"></i>
-                            <span><a href="https://wa.me/919457273340" target="_blank"
-                                    rel="noopener">+91-9457273340</a></span>
-                        </div>
+                    <div class="founder-body">
+                        <div class="founder-role">Founder &amp; Former Secretary General</div>
+                        <h3 class="founder-name">Qazi Mujahidul Islam Qasmi</h3>
+                        <p class="founder-org">All India Milli Council</p>
                     </div>
                 </div>
 
-                <div class="footer-bottom">
-                    <p class="footer-copy">© 2026 All India Milli Council. All Rights Reserved.</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/profile.php?id=100093525590929" target="_blank"
-                            rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/MilliCouncil92" target="_blank" rel="noopener"
-                            aria-label="X / Twitter"><i class="fab fa-x-twitter"></i></a>
-                        <a href="https://www.youtube.com/@allindiamillicouncil/shorts" target="_blank" rel="noopener"
-                            aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="mailto:aimchq@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <!-- Founder 2 -->
+                <div class="founder-card">
+                    <div class="founder-img-wrap">
+                        <img src="images/dr_manzoor_alam.jpeg" alt="Dr. Mohammad Manzoor Alam" loading="lazy">
+                        <div class="founder-img-overlay"></div>
+                    </div>
+                    <div class="founder-body">
+                        <div class="founder-role">Founder &amp; Former General Secretary</div>
+                        <h3 class="founder-name">Dr. Mohammad Manzoor Alam</h3>
+                        <p class="founder-org">All India Milli Council</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ─── FOOTER ─── -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/logoFull.jpeg" alt="All India Milli Council" class="footer-logo-full">
+                    <p class="footer-desc">
+                        Established in 1992 as a united platform for the Muslim community in India — committed to
+                        education, social welfare, unity, and the protection of democratic values.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#news">Current Affairs</a></li>
+                        <li><a href="#aims">Aims &amp; Objectives</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Get in Touch</h4>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>161/32, Jogabai, Jamia Nagar, Okhla,<br>New Delhi – 110025, India</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>
+                            <a href="mailto:aimchq@gmail.com">aimchq@gmail.com</a><br>
+                            <a href="mailto:allindiamillicouncil1@gmail.com">allindiamillicouncil1@gmail.com</a>
+                        </span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-globe"></i>
+                        <span><a href="https://www.aimcnd.org" target="_blank" rel="noopener">www.aimcnd.org</a></span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span><a href="tel:+911126980060">011-2698 0060</a></span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span><a href="https://wa.me/919457273340" target="_blank"
+                                rel="noopener">+91-9457273340</a></span>
                     </div>
                 </div>
             </div>
-        </footer>
+
+            <div class="footer-bottom">
+                <p class="footer-copy">© 2026 All India Milli Council. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=100093525590929" target="_blank" rel="noopener"
+                        aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/MilliCouncil92" target="_blank" rel="noopener" aria-label="X / Twitter"><i
+                            class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.youtube.com/@allindiamillicouncil/shorts" target="_blank" rel="noopener"
+                        aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="mailto:aimchq@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     </div><!-- /.page -->
 
     <!-- ─── MODAL 1: Mughesi condolence ─── -->
     <div class="article-modal-backdrop" id="modal1" onclick="closeArticleModal(event)">
         <div class="article-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <button class="modal-close" onclick="closeModalById('modal1')" aria-label="Close"><i class="fas fa-times"></i></button>
+            <button class="modal-close" onclick="closeModalById('modal1')" aria-label="Close"><i
+                    class="fas fa-times"></i></button>
             <div class="modal-img-wrap">
                 <img src="images/photo.jpeg" alt="Condolence meeting – AIMC, April 2026">
                 <div class="modal-img-fade"></div>
-                <div class="modal-img-caption"><span class="news-tag" style="position:relative;z-index:2">Condolence</span></div>
+                <div class="modal-img-caption"><span class="news-tag"
+                        style="position:relative;z-index:2">Condolence</span></div>
             </div>
             <div class="modal-body">
-                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>New Delhi · April 15, 2026</time>
-                <h2 class="modal-title" id="modalTitle">AIMC Mourns the Passing of Maulana Hakim Mohammad Abdullah Mughesi</h2>
+                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>New Delhi · April
+                    15, 2026</time>
+                <h2 class="modal-title" id="modalTitle">AIMC Mourns the Passing of Maulana Hakim Mohammad Abdullah
+                    Mughesi</h2>
                 <div class="modal-content">
-                    <p><strong>New Delhi:</strong> A condolence meeting to mourn the demise of the President of the All India Milli Council (AIMC), Maulana Hakim Mohammad Abdullah Mughesi, was organised by the Council at the auditorium of the Institute of Objective Studies on April 15, 2026.</p>
-                    <p>The programme began with the recitation of verses from the Holy Qur'an by Maulana Umar Abdi Qasmi, followed by their Urdu translation. The proceedings were conducted by AIMC Assistant Secretary Maulana Shah Ajmal Farooq Nadwi.</p>
+                    <p><strong>New Delhi:</strong> A condolence meeting to mourn the demise of the President of the All
+                        India Milli Council (AIMC), Maulana Hakim Mohammad Abdullah Mughesi, was organised by the
+                        Council at the auditorium of the Institute of Objective Studies on April 15, 2026.</p>
+                    <p>The programme began with the recitation of verses from the Holy Qur'an by Maulana Umar Abdi
+                        Qasmi, followed by their Urdu translation. The proceedings were conducted by AIMC Assistant
+                        Secretary Maulana Shah Ajmal Farooq Nadwi.</p>
                     <h3>Tributes to a Visionary Leader</h3>
-                    <p>In his opening remarks, AIMC Assistant Secretary General Shaikh Nizamuddin described Maulana Mughesi as a great personality who constantly encouraged the younger generation to work for the welfare of society and spread Islamic knowledge.</p>
-                    <p>Secretary General of the IOS, Mohammad Alam, recalled his close association with the late Maulana and shared the guidance he received from him regarding strengthening and expanding the AIMC.</p>
-                    <p>AIMC Assistant Secretary Suleiman Khan noted that Maulana Mughesi served as AIMC President for <strong>21 years</strong> and maintained cordial relations with various Milli organisations.</p>
-                    <p>Maulana Khalilur Rahman Sajjad Nomani said Maulana Mughesi dedicated his life to religious and contemporary education, carrying out his responsibilities with courage, positivity, and determination.</p>
+                    <p>In his opening remarks, AIMC Assistant Secretary General Shaikh Nizamuddin described Maulana
+                        Mughesi as a great personality who constantly encouraged the younger generation to work for the
+                        welfare of society and spread Islamic knowledge.</p>
+                    <p>Secretary General of the IOS, Mohammad Alam, recalled his close association with the late Maulana
+                        and shared the guidance he received from him regarding strengthening and expanding the AIMC.</p>
+                    <p>AIMC Assistant Secretary Suleiman Khan noted that Maulana Mughesi served as AIMC President for
+                        <strong>21 years</strong> and maintained cordial relations with various Milli organisations.
+                    </p>
+                    <p>Maulana Khalilur Rahman Sajjad Nomani said Maulana Mughesi dedicated his life to religious and
+                        contemporary education, carrying out his responsibilities with courage, positivity, and
+                        determination.</p>
                     <h3>Message from AIMPLB Leadership</h3>
-                    <p>Chairman of the All India Muslim Personal Law Board (AIMPLB), Maulana Khalid Saifullah Rahmani, described him as an institution builder and noted that dozens of madarsas were established under his guidance.</p>
+                    <p>Chairman of the All India Muslim Personal Law Board (AIMPLB), Maulana Khalid Saifullah Rahmani,
+                        described him as an institution builder and noted that dozens of madarsas were established under
+                        his guidance.</p>
                     <h3>Speakers Recall His Contributions</h3>
-                    <p>Haji Pervez Miyan (Delhi AIMC President) expressed faith that Allah would provide equally capable leadership. Mufti Umar Abideen announced a book documenting the Maulana's life would soon be published. Maulana Asghar Ali Imam Mehdi Salafi praised his two-decade expansion of AIMC's network.</p>
-                    <p>Mufti Mohammad Nadir Qasmi said strengthening AIMC would be the greatest tribute to its three prominent leaders — Qazi Mujahidul Islam Qasmi, Dr. Mohammad Manzoor Alam, and Maulana Abdullah Mughesi.</p>
+                    <p>Haji Pervez Miyan (Delhi AIMC President) expressed faith that Allah would provide equally capable
+                        leadership. Mufti Umar Abideen announced a book documenting the Maulana's life would soon be
+                        published. Maulana Asghar Ali Imam Mehdi Salafi praised his two-decade expansion of AIMC's
+                        network.</p>
+                    <p>Mufti Mohammad Nadir Qasmi said strengthening AIMC would be the greatest tribute to its three
+                        prominent leaders — Qazi Mujahidul Islam Qasmi, Dr. Mohammad Manzoor Alam, and Maulana Abdullah
+                        Mughesi.</p>
                     <h3>Concerns Over the Community's Future</h3>
-                    <p>Prof. M. Afzal Wani said the passing had created a significant void, noting sincerity, capability, and honesty were qualities the Maulana possessed in abundance. Maulana Fazlur Rahman Mujaddidi described the death as an irreparable loss and recalled the <strong>IOS Lifetime Achievement Award 2021</strong>.</p>
+                    <p>Prof. M. Afzal Wani said the passing had created a significant void, noting sincerity,
+                        capability, and honesty were qualities the Maulana possessed in abundance. Maulana Fazlur Rahman
+                        Mujaddidi described the death as an irreparable loss and recalled the <strong>IOS Lifetime
+                            Achievement Award 2021</strong>.</p>
                     <h3>Remembering His Leadership and Legacy</h3>
-                    <p>Advocate Afsar Jahan described him as <em>"a leader who led the leaders behind."</em> His son, Maulana Abdul Malik Mughesi, called his father <em>"a public property who belonged to all."</em></p>
-                    <p>Acting AIMC President Maulana Anisur Rahman Qasmi said the Maulana's life reflected brilliance, patience, and foresight. Prof. Haseena Hashia recalled his famous slogan:</p>
+                    <p>Advocate Afsar Jahan described him as <em>"a leader who led the leaders behind."</em> His son,
+                        Maulana Abdul Malik Mughesi, called his father <em>"a public property who belonged to all."</em>
+                    </p>
+                    <p>Acting AIMC President Maulana Anisur Rahman Qasmi said the Maulana's life reflected brilliance,
+                        patience, and foresight. Prof. Haseena Hashia recalled his famous slogan:</p>
                     <blockquote class="modal-quote">
                         <p class="quote-urdu">تم ہمیں تریشول دو، ہم تمہیں پھول دیں گے</p>
                         <p class="quote-trans">"While you give us tridents, we shall give you flowers."</p>
                     </blockquote>
                     <h3>Vote of Thanks</h3>
-                    <p>At the conclusion of the programme, Maulana Shah Ajmal Farooq Nadwi delivered the vote of thanks.</p>
+                    <p>At the conclusion of the programme, Maulana Shah Ajmal Farooq Nadwi delivered the vote of thanks.
+                    </p>
                 </div>
             </div>
         </div>
@@ -1887,13 +2163,15 @@
     <!-- ─── MODAL 2: Dr. Manzoor Alam Memorial (Urdu) ─── -->
     <div class="article-modal-backdrop" id="modal2" onclick="closeArticleModal(event)">
         <div class="article-modal" role="dialog" aria-modal="true" aria-labelledby="modal2Title">
-            <button class="modal-close" onclick="closeModalById('modal2')" aria-label="Close"><i class="fas fa-times"></i></button>
+            <button class="modal-close" onclick="closeModalById('modal2')" aria-label="Close"><i
+                    class="fas fa-times"></i></button>
 
             <!-- Image 1: Main event photo -->
             <div class="modal-img-wrap">
                 <img src="images/alam_memorial_1.jpeg" alt="ڈاکٹر منظور عالم یادگاری پروگرام، کانسٹی ٹیوشن کلب">
                 <div class="modal-img-fade"></div>
-                <div class="modal-img-caption"><span class="news-tag" style="position:relative;z-index:2">پریس ریلیز</span></div>
+                <div class="modal-img-caption"><span class="news-tag" style="position:relative;z-index:2">پریس
+                        ریلیز</span></div>
             </div>
 
             <div class="modal-body">
@@ -1901,38 +2179,66 @@
                     <i class="far fa-calendar-alt"></i> نئی دہلی · 10 مئی 2026
                 </time>
 
-                <h2 class="modal-title" id="modal2Title" style="direction:rtl;text-align:right;line-height:1.7;margin-bottom:6px">
+                <h2 class="modal-title" id="modal2Title"
+                    style="direction:rtl;text-align:right;line-height:1.7;margin-bottom:6px">
                     ڈاکٹر منظور عالم کی حیات اور میراث پر اہم پروگرام
                 </h2>
-                <p style="direction:rtl;text-align:right;color:var(--accent);font-size:0.9rem;font-weight:600;margin-bottom:24px">
+                <p
+                    style="direction:rtl;text-align:right;color:var(--accent);font-size:0.9rem;font-weight:600;margin-bottom:24px">
                     کانسٹی ٹیوشن کلب، نئی دہلی میں ملک و بیرونِ ملک کی شخصیات کا اظہارِ خیال
                 </p>
 
                 <div class="modal-content urdu-content">
 
-                    <p>نئی دہلی، 10 مئی 2026 — سابق سرپرستِ اعلیٰ انسٹی ٹیوٹ آف آبجیکٹیو اسٹڈیز اور جنرل سکریٹری آل انڈیا ملی کونسل کے تخلیقی خیال اور ان کی رہنمائی نے ملک و ملت کو جو کچھ دیا، وہ سنہرے حروف میں تحریر کیے جانے کے لائق ہے۔ کانسٹی ٹیوشن کلب کے اسپیکر ہال میں منعقد یادگاری پروگرام میں ملک و بیرونِ ملک کی قابلِ ذکر شخصیات نے ان کی قربانیوں اور اہم کارناموں کو یاد کرتے ہوئے انہیں خراجِ عقیدت پیش کیا۔</p>
+                    <p>نئی دہلی، 10 مئی 2026 — سابق سرپرستِ اعلیٰ انسٹی ٹیوٹ آف آبجیکٹیو اسٹڈیز اور جنرل سکریٹری آل
+                        انڈیا ملی کونسل کے تخلیقی خیال اور ان کی رہنمائی نے ملک و ملت کو جو کچھ دیا، وہ سنہرے حروف میں
+                        تحریر کیے جانے کے لائق ہے۔ کانسٹی ٹیوشن کلب کے اسپیکر ہال میں منعقد یادگاری پروگرام میں ملک و
+                        بیرونِ ملک کی قابلِ ذکر شخصیات نے ان کی قربانیوں اور اہم کارناموں کو یاد کرتے ہوئے انہیں خراجِ
+                        عقیدت پیش کیا۔</p>
 
                     <h3>اظہارِ خیال: بین الاقوامی شخصیات</h3>
 
-                    <p><strong>پروفیسر داؤد اے یحییٰ الہدابی</strong> (انٹرنیشنل اسلامک یونیورسٹی ملیشیا) نے کہا کہ ڈاکٹر محمد منظور عالم نے ایک تعلیمی لیڈر کے طور پر گہرا نقش چھوڑا ہے۔ انہوں نے مسلمانوں کی پسماندگی پر توجہ مرکوز کی، بین المذاہب مکالمے کو آگے بڑھایا اور علومِ اسلامی کو سماجیات سے جوڑنے کی کوشش کی۔</p>
+                    <p><strong>پروفیسر داؤد اے یحییٰ الہدابی</strong> (انٹرنیشنل اسلامک یونیورسٹی ملیشیا) نے کہا کہ
+                        ڈاکٹر محمد منظور عالم نے ایک تعلیمی لیڈر کے طور پر گہرا نقش چھوڑا ہے۔ انہوں نے مسلمانوں کی
+                        پسماندگی پر توجہ مرکوز کی، بین المذاہب مکالمے کو آگے بڑھایا اور علومِ اسلامی کو سماجیات سے جوڑنے
+                        کی کوشش کی۔</p>
 
-                    <p><strong>پروفیسر ڈاکٹر جاسر عودہ</strong> (صدر، مقاصد انسٹی ٹیوٹ گلوبل، امریکہ) نے کہا کہ ڈاکٹر منظور عالم کی فکر صرف ہندوستان تک محدود نہیں تھی بلکہ دنیا بھر میں اس کی گونج سنائی دیتی تھی۔ انہوں نے اوقاف اور اسلامی معاشیات کے مطالعے میں بڑی کوششیں کیں اور مدینہ منورہ میں قیام کے دوران قرآنِ کریم کے انگریزی ترجمے میں بھی اپنا اشتراک کیا۔</p>
+                    <p><strong>پروفیسر ڈاکٹر جاسر عودہ</strong> (صدر، مقاصد انسٹی ٹیوٹ گلوبل، امریکہ) نے کہا کہ ڈاکٹر
+                        منظور عالم کی فکر صرف ہندوستان تک محدود نہیں تھی بلکہ دنیا بھر میں اس کی گونج سنائی دیتی تھی۔
+                        انہوں نے اوقاف اور اسلامی معاشیات کے مطالعے میں بڑی کوششیں کیں اور مدینہ منورہ میں قیام کے دوران
+                        قرآنِ کریم کے انگریزی ترجمے میں بھی اپنا اشتراک کیا۔</p>
 
-                    <p><strong>ڈاکٹر عبداللہ اللحیدان</strong> (وزارتِ تعلیم، حکومتِ سعودی عرب) نے آن لائن خطاب میں کہا کہ ڈاکٹر منظور عالم نے سعودی عرب میں وزارتِ معاشیات سے اپنی ملازمت کا آغاز کیا۔ انہوں نے سماجیات اور معاشیات کو میڈیا سے مربوط کیا، اور ان کے کاموں کی گونج پاکستان، بنگلہ دیش، جدہ اور ملیشیا تک سنائی دیتی ہے۔</p>
+                    <p><strong>ڈاکٹر عبداللہ اللحیدان</strong> (وزارتِ تعلیم، حکومتِ سعودی عرب) نے آن لائن خطاب میں کہا
+                        کہ ڈاکٹر منظور عالم نے سعودی عرب میں وزارتِ معاشیات سے اپنی ملازمت کا آغاز کیا۔ انہوں نے سماجیات
+                        اور معاشیات کو میڈیا سے مربوط کیا، اور ان کے کاموں کی گونج پاکستان، بنگلہ دیش، جدہ اور ملیشیا تک
+                        سنائی دیتی ہے۔</p>
 
                     <h3>ہندوستانی شخصیات کا اظہارِ خیال</h3>
 
-                    <p><strong>سید سعادت اللہ حسینی</strong> (امیر، جماعت اسلامی ہند) نے کہا کہ ڈاکٹر منظور عالم کا علمی، فکری اور تحقیقی کام نہایت اہم ہے۔ وہ اختراعی منصوبوں کو عملی شکل دینے میں مہارت رکھتے تھے اور عالمی روابط کو مؤثر انداز میں استعمال کرتے تھے۔ اللہ تعالیٰ ان کے تمام کاموں کو امت کے لیے صدقۂ جاریہ بنائے۔</p>
+                    <p><strong>سید سعادت اللہ حسینی</strong> (امیر، جماعت اسلامی ہند) نے کہا کہ ڈاکٹر منظور عالم کا
+                        علمی، فکری اور تحقیقی کام نہایت اہم ہے۔ وہ اختراعی منصوبوں کو عملی شکل دینے میں مہارت رکھتے تھے
+                        اور عالمی روابط کو مؤثر انداز میں استعمال کرتے تھے۔ اللہ تعالیٰ ان کے تمام کاموں کو امت کے لیے
+                        صدقۂ جاریہ بنائے۔</p>
 
-                    <p><strong>مولانا خلیل الرحمن سجاد نعمانی</strong> (رکنِ تاسیسی، آل انڈیا ملی کونسل) نے کہا کہ ڈاکٹر منظور عالم نے ہمیشہ اختلافِ رائے کی قدر کی اور مختلف رجحانات کے لوگوں کو یکجا کیا۔ حضرت مولانا قاضی مجاہد الاسلام قاسمیؒ کے شانہ بشانہ کام کرتے رہے اور ان کے اندر توافق و تعاون کا حسین مزاج تھا۔</p>
+                    <p><strong>مولانا خلیل الرحمن سجاد نعمانی</strong> (رکنِ تاسیسی، آل انڈیا ملی کونسل) نے کہا کہ ڈاکٹر
+                        منظور عالم نے ہمیشہ اختلافِ رائے کی قدر کی اور مختلف رجحانات کے لوگوں کو یکجا کیا۔ حضرت مولانا
+                        قاضی مجاہد الاسلام قاسمیؒ کے شانہ بشانہ کام کرتے رہے اور ان کے اندر توافق و تعاون کا حسین مزاج
+                        تھا۔</p>
 
-                    <p><strong>سلمان خورشید</strong> (سابق وزیرِ خارجہ، صدر انڈیا اسلامک کلچرل سینٹر) نے کہا کہ ڈاکٹر منظور عالم ہندوستان کے مستقبل کو محفوظ بنانے کے لیے فکرمند رہتے تھے۔ سچر کمیٹی اور کنڈو کمیٹی کے ساتھ فکری سطح پر غیر معمولی تعاون فراہم کیا۔</p>
+                    <p><strong>سلمان خورشید</strong> (سابق وزیرِ خارجہ، صدر انڈیا اسلامک کلچرل سینٹر) نے کہا کہ ڈاکٹر
+                        منظور عالم ہندوستان کے مستقبل کو محفوظ بنانے کے لیے فکرمند رہتے تھے۔ سچر کمیٹی اور کنڈو کمیٹی کے
+                        ساتھ فکری سطح پر غیر معمولی تعاون فراہم کیا۔</p>
 
-                    <p><strong>ڈاکٹر اخترالواسع</strong> (پروفیسر ایمریٹس، جامعہ ملیہ اسلامیہ) نے کہا کہ ڈاکٹر منظور عالم نے آئی او ایس جیسا تھنک ٹینک قائم کرکے ایک عہد ساز کارنامہ انجام دیا اور مختلف الخیال افراد کو یکجا کیا۔</p>
+                    <p><strong>ڈاکٹر اخترالواسع</strong> (پروفیسر ایمریٹس، جامعہ ملیہ اسلامیہ) نے کہا کہ ڈاکٹر منظور
+                        عالم نے آئی او ایس جیسا تھنک ٹینک قائم کرکے ایک عہد ساز کارنامہ انجام دیا اور مختلف الخیال افراد
+                        کو یکجا کیا۔</p>
 
-                    <p><strong>منی شنکر ایر</strong> (سابق مرکزی وزیر) نے کہا کہ ان کے ڈاکٹر منظور عالم سے گہرے تعلقات تھے۔ وہ غیر جانبدارانہ انداز میں ملک و قوم کی خدمت انجام دیتے تھے۔</p>
+                    <p><strong>منی شنکر ایر</strong> (سابق مرکزی وزیر) نے کہا کہ ان کے ڈاکٹر منظور عالم سے گہرے تعلقات
+                        تھے۔ وہ غیر جانبدارانہ انداز میں ملک و قوم کی خدمت انجام دیتے تھے۔</p>
 
-                    <p><strong>ڈاکٹر جان دیال</strong> (معروف صحافی و عیسائی لیڈر) نے کہا کہ ڈاکٹر منظور عالم کی زندگی منفرد تھی۔ وہ دوسری برادریوں کو بھی ساتھ لے کر چلنے اور فرقہ وارانہ ہم آہنگی کے فروغ کے لیے مسلسل جدوجہد کرتے رہے۔</p>
+                    <p><strong>ڈاکٹر جان دیال</strong> (معروف صحافی و عیسائی لیڈر) نے کہا کہ ڈاکٹر منظور عالم کی زندگی
+                        منفرد تھی۔ وہ دوسری برادریوں کو بھی ساتھ لے کر چلنے اور فرقہ وارانہ ہم آہنگی کے فروغ کے لیے
+                        مسلسل جدوجہد کرتے رہے۔</p>
 
                     <!-- Image 2: Attendees photo -->
                     <div class="modal-inline-img">
@@ -1950,23 +2256,30 @@
                         <li><strong>مولانا عتیق احمد بستوی</strong> — سکریٹری برائے علمی امور، اسلامک فقہ اکیڈمی</li>
                         <li><strong>پروفیسر حسینہ حاشیہ</strong> — وائس چیئرپرسن، آئی او ایس</li>
                         <li><strong>ڈاکٹر محمد افضل وانی</strong> — چیئرمین، آئی او ایس</li>
-                        <li><strong>پروفیسر عمر حسن کاسولے</strong> — سکریٹری جنرل، انٹرنیشنل انسٹی ٹیوٹ آف اسلامک تھاٹس، سعودی عرب</li>
+                        <li><strong>پروفیسر عمر حسن کاسولے</strong> — سکریٹری جنرل، انٹرنیشنل انسٹی ٹیوٹ آف اسلامک
+                            تھاٹس، سعودی عرب</li>
                         <li><strong>پروفیسر ایم ایچ قریشی</strong> — جامعہ ملیہ اسلامیہ</li>
-                        <li><strong>ڈاکٹر علی محی الدین القرہ داغی</strong> — چیئرمین، انٹرنیشنل یونین آف مسلم لیڈرس، قطر</li>
+                        <li><strong>ڈاکٹر علی محی الدین القرہ داغی</strong> — چیئرمین، انٹرنیشنل یونین آف مسلم لیڈرس،
+                            قطر</li>
                         <li><strong>شیخ نظام الدین</strong> — معاون جنرل سکریٹری، آل انڈیا ملی کونسل</li>
                         <li><strong>اقبال احمد</strong> — بی بی سی نامہ نگار</li>
                         <li><strong>اے یو آصف</strong> — معروف صحافی</li>
                         <li><strong>پیوش بابلے</strong> — تجزیہ کار و مصنف، بھوپال</li>
-                        <li><strong>ڈاکٹر آفتاب عالم</strong> — چیئرمین، کٹیہار میڈیکل کالج، سابق رکن پارلیمان (راجیہ سبھا)</li>
+                        <li><strong>ڈاکٹر آفتاب عالم</strong> — چیئرمین، کٹیہار میڈیکل کالج، سابق رکن پارلیمان (راجیہ
+                            سبھا)</li>
                         <li><strong>احمد اشفاق کریم</strong> — سابق رکن پارلیمان</li>
                         <li><strong>محمد سلیم</strong> — سابق رکن پارلیمان</li>
                     </ul>
 
-                    <p>تمام مقررین نے ڈاکٹر منظور عالم کی خدمات کا اعتراف کیا اور ان کے اہلِ خانہ کے ساتھ اظہارِ ہمدردی کیا۔ آئی او ایس کے سکریٹری جنرل محمد عالم، آل انڈیا ملی کونسل، اسلامک فقہ اکیڈمی، تعاون ٹرسٹ اور فیچر و نیوز الائنس کے کارکنان نے پروگرام کی کامیابی میں اہم کردار ادا کیا۔</p>
+                    <p>تمام مقررین نے ڈاکٹر منظور عالم کی خدمات کا اعتراف کیا اور ان کے اہلِ خانہ کے ساتھ اظہارِ ہمدردی
+                        کیا۔ آئی او ایس کے سکریٹری جنرل محمد عالم، آل انڈیا ملی کونسل، اسلامک فقہ اکیڈمی، تعاون ٹرسٹ اور
+                        فیچر و نیوز الائنس کے کارکنان نے پروگرام کی کامیابی میں اہم کردار ادا کیا۔</p>
 
-                    <p>اس پروگرام کی نظامت شیخ نظام الدین، اسسٹنٹ جنرل سکریٹری آل انڈیا ملی کونسل، نے کی۔ چار گھنٹے تک جاری رہنے والا یہ پروگرام مولانا انیس الرحمن قاسمی کی دعاؤں پر اختتام پذیر ہوا۔</p>
+                    <p>اس پروگرام کی نظامت شیخ نظام الدین، اسسٹنٹ جنرل سکریٹری آل انڈیا ملی کونسل، نے کی۔ چار گھنٹے تک
+                        جاری رہنے والا یہ پروگرام مولانا انیس الرحمن قاسمی کی دعاؤں پر اختتام پذیر ہوا۔</p>
 
-                    <div class="news-urdu-byline" style="border-top:1px solid var(--border);padding-top:16px;margin-top:24px">
+                    <div class="news-urdu-byline"
+                        style="border-top:1px solid var(--border);padding-top:16px;margin-top:24px">
                         جاری کردہ: شعبۂ نشر و اشاعت، آل انڈیا ملی کونسل
                     </div>
 
@@ -1978,43 +2291,58 @@
     <!-- ─── MODAL 3: IOS Memorial Report (English) ─── -->
     <div class="article-modal-backdrop" id="modal3" onclick="closeArticleModal(event)">
         <div class="article-modal" role="dialog" aria-modal="true" aria-labelledby="modal3Title">
-            <button class="modal-close" onclick="closeModalById('modal3')" aria-label="Close"><i class="fas fa-times"></i></button>
+            <button class="modal-close" onclick="closeModalById('modal3')" aria-label="Close"><i
+                    class="fas fa-times"></i></button>
 
             <div class="modal-img-wrap">
                 <img src="images/alam_memorial_1.jpeg" alt="Memorial Programme – Dr. Mohammad Manzoor Alam">
                 <div class="modal-img-fade"></div>
-                <div class="modal-img-caption"><span class="news-tag" style="position:relative;z-index:2">IOS Report</span></div>
+                <div class="modal-img-caption"><span class="news-tag" style="position:relative;z-index:2">IOS
+                        Report</span></div>
             </div>
 
             <div class="modal-body">
-                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>New Delhi · May 9, 2026</time>
-                <h2 class="modal-title" id="modal3Title">Remembering Dr. Mohammad Manzoor Alam: A Legacy That Lives On</h2>
+                <time class="news-date"><i class="far fa-calendar-alt" style="margin-right:6px"></i>New Delhi · May 9,
+                    2026</time>
+                <h2 class="modal-title" id="modal3Title">Remembering Dr. Mohammad Manzoor Alam: A Legacy That Lives On
+                </h2>
 
                 <!-- Hadith opening quote -->
                 <blockquote class="modal-quote" style="margin-bottom:24px">
                     <p style="color:var(--text);font-size:1rem;line-height:1.8;margin-bottom:8px">
-                        "When a person dies, his deeds end except three: ongoing charity, beneficial knowledge, and a righteous child who prays for him."
+                        "When a person dies, his deeds end except three: ongoing charity, beneficial knowledge, and a
+                        righteous child who prays for him."
                     </p>
                     <p class="quote-trans">— Sahih Muslim</p>
                 </blockquote>
 
                 <div class="modal-content">
-                    <p>Join us in reflecting on the life, vision, and lasting contributions of a scholar, institution-builder, and champion of justice whose work continues to benefit society.</p>
+                    <p>Join us in reflecting on the life, vision, and lasting contributions of a scholar,
+                        institution-builder, and champion of justice whose work continues to benefit society.</p>
 
                     <h3>About the Programme</h3>
-                    <p><strong>New Delhi:</strong> A memorial programme to honour and remember the Life and Legacy of the Founding Chairman and Chief Patron of the Institute of Objective Studies (IOS), Dr. Mohammad Manzoor Alam, was jointly organised by the IOS, Ta'awun Trust, All India Milli Council and Islamic Fiqh Academy (India), at the Speaker Hall, Constitution Club of India, on <strong>May 9, 2026</strong>.</p>
+                    <p><strong>New Delhi:</strong> A memorial programme to honour and remember the Life and Legacy of
+                        the Founding Chairman and Chief Patron of the Institute of Objective Studies (IOS), Dr. Mohammad
+                        Manzoor Alam, was jointly organised by the IOS, Ta'awun Trust, All India Milli Council and
+                        Islamic Fiqh Academy (India), at the Speaker Hall, Constitution Club of India, on <strong>May 9,
+                            2026</strong>.</p>
 
                     <h3>About Dr. Mohammad Manzoor Alam</h3>
-                    <p>Dr. Mohammad Manzoor Alam — a thinker, social scientist, and institution-builder — was the founding chairman of the Institute of Objective Studies (IOS). He left for his heavenly abode on <strong>January 13, 2026</strong>, leaving behind a rich legacy of scholarship, institution-building, and service to the community.</p>
+                    <p>Dr. Mohammad Manzoor Alam — a thinker, social scientist, and institution-builder — was the
+                        founding chairman of the Institute of Objective Studies (IOS). He left for his heavenly abode on
+                        <strong>January 13, 2026</strong>, leaving behind a rich legacy of scholarship,
+                        institution-building, and service to the community.
+                    </p>
 
                     <h3>Opening of the Programme</h3>
-                    <p>The memorial programme began with the recitation of a verse from the Holy Qur'an by <strong>Hafiz Hammad Kaleem Alam</strong>, the grandson of the late Dr. Mohammad Manzoor Alam.</p>
+                    <p>The memorial programme began with the recitation of a verse from the Holy Qur'an by <strong>Hafiz
+                            Hammad Kaleem Alam</strong>, the grandson of the late Dr. Mohammad Manzoor Alam.</p>
 
                     <!-- External link CTA -->
                     <div class="modal-ext-link-wrap">
                         <p>Read the full detailed report on the IOS website:</p>
-                        <a href="https://www.iosworld.org/recentactivitydetails.aspx?raid=681"
-                           target="_blank" rel="noopener" class="modal-ext-link">
+                        <a href="https://www.iosworld.org/recentactivitydetails.aspx?raid=681" target="_blank"
+                            rel="noopener" class="modal-ext-link">
                             <i class="fas fa-external-link-alt"></i>
                             View Full Report on IOS Website
                         </a>
@@ -2024,11 +2352,158 @@
         </div>
     </div>
 
+    </div>
+
+    <!-- ─── MODAL 4: Urdu tribute by Ashraf Ali Bastawi ─── -->
+    <div class="article-modal-backdrop" id="modal4" onclick="closeArticleModal(event)">
+        <div class="article-modal" role="dialog" aria-modal="true" aria-labelledby="modal4Title">
+            <button class="modal-close" onclick="closeModalById('modal4')" aria-label="Close"><i
+                    class="fas fa-times"></i></button>
+            <div class="modal-img-wrap">
+                <img src="images/dr_manzoor_alam.jpeg" alt="ڈاکٹر محمد منظور عالم">
+                <div class="modal-img-fade"></div>
+                <div class="modal-img-caption"><span class="news-tag" style="position:relative;z-index:2">تعزیتی
+                        مضمون</span></div>
+            </div>
+            <div class="modal-body">
+                <time class="news-date" style="direction:ltr"><i class="far fa-calendar-alt"
+                        style="margin-right:6px"></i>جنوری 2026</time>
+                <h2 class="modal-title" id="modal4Title" style="direction:rtl;text-align:right;line-height:1.8">
+                    ملتِ اسلامیہ ہند میں ریسرچ کی اسپرٹ کو فروغ دینے والا آج رخصت ہو گیا
+                </h2>
+                <p
+                    style="direction:rtl;text-align:right;color:var(--accent);font-size:0.9rem;font-weight:600;margin-bottom:20px">
+                    از: اشرف علی بستوی</p>
+                <div class="modal-content" style="direction:rtl;text-align:right">
+                    <blockquote class="modal-quote">
+                        <p style="color:var(--text);font-size:1rem;line-height:1.9;margin-bottom:6px">"جو قوم اپنے
+                            دانشوروں کی قدر نہیں کرتی، وہ بانجھ ہو جاتی ہے۔"</p>
+                        <p class="quote-trans">— نوم چومسکی</p>
+                    </blockquote>
+                    <p>یہ جملہ پڑھتے ہی ذہن اور دل میں ایک عجیب سی خلش پیدا ہوئی، کیونکہ ابھی کچھ ہی دیر قبل آئی او ایس
+                        کے سابق چیئرمین ڈاکٹر منظور عالم صاحب کے جنازے سے واپسی ہوئی ہے۔ ہڈیوں کو گلا دینے والی جنوری کی
+                        سرد شام کے باوجود جنازے میں لوگوں کا ایک جمِ غفیر تھا۔ ہر زبان پر ڈاکٹر صاحب کی ملی خدمات کا
+                        تذکرہ تھا، اور ہر دل سوگوار۔</p>
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">
+                        تحقیق کے فروغ کا عزم</h3>
+                    <p>ڈاکٹر منظور عالم صاحب اُن شخصیات میں سے تھے جنہوں نے بابری مسجد کی شہادت کے بعد کے ہندوستان کو
+                        بہت قریب سے دیکھا اور سمجھا۔ انہوں نے تحقیق کے عمل کو فروغ دیا تاکہ ملی مسائل پر گفتگو مستند
+                        حوالوں اور ٹھوس دلائل پر مبنی ہو۔ میڈیا، سیاست، دینیات، سماجیات اور دیگر اہم شعبوں میں پہل کرتے
+                        ہوئے ادارے قائم کیے۔</p>
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">
+                        پہلی ملاقات</h3>
+                    <p>ڈاکٹر صاحب سے میری پہلی ملاقات نومبر 2006 میں سہ روزہ دعوت کے لیے ایک انٹرویو کے سلسلے میں ہوئی
+                        تھی۔ ان دنوں سچر کمیٹی رپورٹ کا خاصا چرچا تھا۔ اسی پس منظر میں ان کی رائے جاننے حاضر ہوا تھا۔
+                    </p>
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">
+                        آئی او ایس اور میڈیا کا محاذ</h3>
+                    <p>2014 میں جب ایشیا ٹائمز اردو کا آغاز ہوا تو سینئر صحافی خورشید عالم صاحب نے کہا، چلو تمہیں ڈاکٹر
+                        صاحب سے ملواتا ہوں۔ انہوں نے بڑی توجہ سے میری گفتگو سنی، پھر مسکرائے اور بولے:</p>
+                    <blockquote class="modal-quote">
+                        <p style="color:var(--text);line-height:1.9;margin-bottom:6px">"آپ نے بہت اہم کام شروع کیا ہے،
+                            وہ بھی بروقت، اسے جاری رکھیے۔"</p>
+                        <p class="quote-trans">— ڈاکٹر منظور عالم</p>
+                    </blockquote>
+                    <p>اس کے بعد کئی اہم کانفرنسوں میں مجھے ساتھ رکھا۔ کولکتہ کی ایک کانفرنس سے واپسی پر کہنے لگے:
+                        <em>"آپ ہمارے پروگرام پر میڈیا کی نظر سے بے لاگ تبصرہ کیجیے، ایک تفصیلی رپورٹ دیجیے اور اگر ممکن
+                            ہو تو کچھ تجاویز بھی پیش کریں۔"</em>
+                    </p>
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">
+                        آخری ملاقات</h3>
+                    <p>آخری ملاقات تقریباً ڈیڑھ برس قبل دفتر میں ہوئی۔ ڈاکٹر صاحب کی طبیعت خاصی ناساز تھی، اس کے باوجود
+                        ملاقات کے لیے وقت دیا۔ میں چند منٹ تاخیر سے پہنچا تو کارکن نے کہا: <em>"ڈاکٹر صاحب آپ کا انتظار
+                            کر رہے ہیں، فوراً تشریف لے جائیے۔"</em></p>
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">
+                        ایک عہد ساز شخصیت</h3>
+                    <p>ڈاکٹر منظور عالم صاحب ملتِ اسلامیہ ہند کے اُن معماروں میں شامل ہیں جنہوں نے آزادی کے بعد فکری
+                        انتشار سے دوچار ملت کو ٹھہر کر سوچنے اور حکمت کے ساتھ آگے بڑھنے کی راہ دکھائی۔ آئی او ایس اور اس
+                        سے وابستہ سرگرمیاں اس حقیقت کی روشن دلیل ہیں۔</p>
+                    <div class="modal-quote"
+                        style="text-align:center;border-left:none;border-radius:12px;background:rgba(15,188,131,0.06);border:1px solid rgba(15,188,131,0.2);margin-top:24px">
+                        <p style="color:var(--text);font-size:1rem;line-height:2">اللہ تعالیٰ ڈاکٹر منظور عالم صاحب کی
+                            تمام کوششوں کو شرفِ قبولیت عطا فرمائے، ان کے درجات بلند کرے، اور ملت کو ان کا نعم البدل عطا
+                            فرمائے۔ آمین</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL 5: National Executive Body Meeting ─── -->
+    <div class="article-modal-backdrop" id="modal5" onclick="closeArticleModal(event)">
+        <div class="article-modal" role="dialog" aria-modal="true" aria-labelledby="modal5Title">
+            <button class="modal-close" onclick="closeModalById('modal5')" aria-label="Close"><i class="fas fa-times"></i></button>
+
+            <div class="modal-img-wrap">
+                <img src="images/national_executive_body_meeting_1.jpeg" alt="مجلس عاملہ اجلاس، نئی دہلی">
+                <div class="modal-img-fade"></div>
+                <div class="modal-img-caption"><span class="news-tag" style="position:relative;z-index:2">پریس ریلیز</span></div>
+            </div>
+
+            <div class="modal-body">
+                <time class="news-date" style="direction:ltr"><i class="far fa-calendar-alt" style="margin-right:6px"></i>نئی دہلی · 22 جولائی 2026</time>
+                <h2 class="modal-title" id="modal5Title" style="direction:rtl;text-align:right;line-height:1.8">
+                    آل انڈیا ملی کونسل کی مجلس عاملہ کا اہم اجلاس نئی دہلی میں منعقد
+                </h2>
+                <p style="direction:rtl;text-align:right;color:var(--accent);font-size:0.9rem;font-weight:600;margin-bottom:20px">
+                    دستور، جمہوریت، مذہبی آزادی، وقف، یکساں سول کوڈ، مدارس، مساجد، SIR اور تعلیمی چیلنجز پر تفصیلی غور، متعدد اہم قراردادیں منظور
+                </p>
+
+                <div class="modal-content" style="direction:rtl;text-align:right">
+
+                    <p>نئی دہلی، 22 جولائی: آل انڈیا ملی کونسل کی مجلس عاملہ کا اہم اجلاس آج کارگزار صدر حضرت مولانا انیس الرحمن قاسمی کی صدارت میں انسٹی ٹیوٹ آڈیٹوریم، جامعہ نگر، نئی دہلی میں منعقد ہوا۔ اجلاس میں ملک بھر سے کونسل کے ذمہ داران، مجلس عاملہ کے اراکین، مختلف ریاستوں کے نمائندگان اور شعبہ جات کے ذمہ داران نے شرکت کی۔</p>
+
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">اجلاس کا آغاز</h3>
+                    <p>اجلاس کا آغاز مفتی نادر القاسمی صاحب (نائب صدر، آل انڈیا ملی کونسل، صوبہ دہلی) کی تلاوتِ کلام پاک سے ہوا۔ صدر آل انڈیا ملی کونسل نئی دہلی، ڈاکٹر پرویز میاں نے تمام اراکین کا خیر مقدم کرتے ہوئے کہا کہ موجودہ نازک حالات میں یہ اجلاس غیر معمولی اہمیت کا حامل ہے۔ معاون جنرل سکریٹری سلیمان خان نے اجلاس کے اغراض و مقاصد پر روشنی ڈالی اور نظامت کے فرائض بھی انجام دیے۔</p>
+
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">مرحومین کو خراجِ عقیدت</h3>
+                    <p>مولانا شاہ اجمل فاروق ندوی نے مرحوم ڈاکٹر محمد منظور عالم، مولانا عبداللہ مغیثیؒ اور دیگر مرحومین کی خدمات کو خراجِ عقیدت پیش کرتے ہوئے تجویزِ تعزیت پیش کی، جسے اجلاس نے متفقہ طور پر منظور کیا۔</p>
+                    <p>مولانا خالد سیف اللہ رحمانی (نائب صدر آل انڈیا ملی کونسل و صدر مسلم پرسنل لا بورڈ) نے افتتاحی خطاب میں کہا کہ موجودہ حالات ملت سے اتحاد، بصیرت اور منظم اجتماعی جدوجہد کا تقاضا کرتے ہیں۔</p>
+
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">مولانا انیس الرحمن قاسمی کا صدارتی خطاب</h3>
+                    <p>کارگزار صدر مولانا انیس الرحمن قاسمی نے کہا کہ آل انڈیا ملی کونسل اپنی دو عظیم شخصیات کی رحلت کے بعد ایک نئے مرحلے میں داخل ہوئی ہے، تاہم افراد کے جانے سے مشن ختم نہیں ہوتے بلکہ ادارے مزید مضبوط عزم کے ساتھ اپنی ذمہ داریاں ادا کرتے ہیں۔ انہوں نے تنظیمی استحکام، قانونی بیداری، نوجوانوں کی تعلیم، معاشی خود کفالت، میڈیا کی مضبوطی اور بین المذاہب ہم آہنگی کو مستقبل کی ترجیحات قرار دیا۔</p>
+
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">حقائق اور ڈیٹا کی اہمیت</h3>
+                    <p>سینئر ایڈووکیٹ یوسف حاتم مچھالہ نے کہا کہ موجودہ حالات میں سرکاری و عدالتی سطح پر مفادات کے تحفظ کے لیے حقائق پر مبنی ڈیٹا جمع کرنا اور اسے منظر عام پر لانا ضروری ہے۔ انہوں نے کہا کہ تین طلاق کی جنگ میں ہم اس لیے ہار گئے کہ متعلقہ ڈیٹا عوام، سرکار اور عدلیہ کے سامنے پیش نہ کر سکے۔</p>
+
+                    <!-- Attendees image -->
+                    <div class="modal-inline-img">
+                        <img src="images/national_executive_body_meeting_3.jpeg" alt="اجلاس میں شریک اراکین">
+                        <p class="modal-inline-caption">اجلاس میں شریک مجلس عاملہ کے اراکین اور مدعوینِ خصوصی</p>
+                    </div>
+
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">اہم قراردادیں منظور</h3>
+                    <p>اجلاس میں متعدد اہم قراردادیں متفقہ طور پر منظور کی گئیں جن میں دستور ہند کی بالادستی، جمہوری اقدار، مذہبی آزادی اور بنیادی حقوق کے تحفظ کے عزم کا اعادہ کیا گیا۔</p>
+
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">یکساں سول کوڈ پر تشویش</h3>
+                    <p>مجلس عاملہ نے یکساں سول کوڈ (UCC) کے نفاذ کی کوششوں پر گہری تشویش ظاہر کرتے ہوئے کہا کہ ہندوستان جیسے کثیر مذہبی اور کثیر ثقافتی ملک میں مذہبی شخصی قوانین کا تحفظ آئین کی بنیادی روح ہے۔</p>
+
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">مدارس، مساجد اور SIR</h3>
+                    <p>اجلاس نے مختلف ریاستوں میں مدارس، مساجد اور اقلیتی اداروں کے خلاف انہدامی کارروائیوں پر سخت تشویش ظاہر کی۔ انتخابی فہرستوں کی خصوصی نظرثانی (SIR) کے دوران ووٹروں کے نام حذف کیے جانے پر بھی تشویش ظاہر کرتے ہوئے ہر شہری کے حقِ رائے دہی کے تحفظ کا مطالبہ کیا گیا۔</p>
+
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">مسلم نوجوانوں کی گرفتاری</h3>
+                    <p>اجلاس میں بے بنیاد شبہات کی بنیاد پر مسلم نوجوانوں کی گرفتاری اور برسوں تک انڈر ٹرائل قیدیوں کی حیثیت سے جیلوں میں رہنے پر شدید تشویش ظاہر کی گئی۔ کونسل نے مطالبہ کیا کہ گرفتاری صرف مضبوط شواہد کی بنیاد پر ہو اور مقدمات کی جلد سماعت یقینی بنائی جائے۔</p>
+
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">اجلاس میں شریک اہم شخصیات</h3>
+                    <p>اجلاس میں ڈاکٹر سید فاروق، قمر عالم، مولانا عبدالمالک مغیثی، مفتی رضوان قاسمی تاراپوری، مولانا آس محمد گلزار قاسمی، ڈاکٹر ظہیر احمد خان، الحاج شہود عالم، قاری محمد شفیق قاسمی، مفتی آصف ندوی، ڈاکٹر عبدالقدیر، حافظ رشید احمد چودھری، شمس تبریز قاسمی، مفتی عمر عابدین مدنی، محترمہ افسر جہاں، محمد جنید ندوی، فیروز احمد صدیقی اور دیگر اراکین عاملہ و مدعوینِ خصوصی نے شرکت کی۔</p>
+
+                    <h3 style="padding-left:0;padding-right:12px;border-left:none;border-right:3px solid var(--accent)">اختتام</h3>
+                    <p>اجلاس کے اختتام پر نائبین صدور مولانا عبدالعلیم قاسمی بھٹکلی اور ڈاکٹر یاسین علی عثمانی نے اپنے تاثرات پیش کیے۔ آخر میں اظہارِ تشکر اور ملک میں امن، بھائی چارہ، عدل و انصاف اور ملت و انسانیت کی فلاح کے لیے خصوصی دعا کی گئی۔</p>
+
+                    <div class="news-urdu-byline" style="border-top:1px solid var(--border);padding-top:16px;margin-top:24px">
+                        جاری کردہ — شعبہ نشرواشاعت، آل انڈیا ملی کونسل
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // ─── HERO AUTO-SLIDER ───
         let heroIdx = 0;
         const heroSlides = document.querySelectorAll('.hero-slide');
-        const heroDots   = document.querySelectorAll('.hsd');
+        const heroDots = document.querySelectorAll('.hsd');
 
         function heroGoTo(n) {
             heroSlides[heroIdx].classList.remove('active');
@@ -2049,7 +2524,7 @@
         // ─── NEWS CAROUSEL ───
         let newsIdx = 0;
         const newsSlides = document.querySelectorAll('.news-slide');
-        const newsDots   = document.querySelectorAll('.nd');
+        const newsDots = document.querySelectorAll('.nd');
 
         function newsGoTo(n) {
             newsSlides[newsIdx].classList.remove('active');
